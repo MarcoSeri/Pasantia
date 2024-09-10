@@ -17,6 +17,7 @@ public class BarcoController : MonoBehaviour{
     private float CurrentSpeed = 0;
     private float CurrentDireccion = 1;
     private bool reverse = false;
+    private float rotacion=0;
 
     // Start is called before the first frame update
     void Start(){
@@ -26,48 +27,27 @@ public class BarcoController : MonoBehaviour{
     // Update is called once per frame
     void Update(){
         mov_input = Input.GetAxisRaw("Vertical");
-        if(CurrentSpeed < 0) 
+        rot_input = Input.GetAxisRaw("Horizontal");
+
+        if (mov_input < 0)
             reverse = true;
-        else
+        else if (mov_input > 0)
             reverse = false;
-        rot_input = Input.GetAxis("Horizontal");
     }
     void FixedUpdate(){
         movertanque(mov_input);
         rotartanque(rot_input);
-
     }
 
     void movertanque(float input){
-
-
-        if(input != 0){
-            CurrentSpeed += input * Time.deltaTime * aceleracion;
-            CurrentSpeed = Mathf.Clamp(CurrentSpeed,-Vel_Tanque,Vel_Tanque);
-        }
-        else{
-            if(CurrentSpeed > 0){
-                CurrentSpeed -= desaceleracion * Time.fixedDeltaTime;
-                if (CurrentSpeed < 0)
-                    CurrentSpeed = 0;
-            }
-            else if(CurrentSpeed < 0){
-                CurrentSpeed += desaceleracion * Time.fixedDeltaTime;
-                if (CurrentSpeed > 0)
-                    CurrentSpeed = 0;
-            }
-        }
-
-        Vector3 Direccion = transform.forward * CurrentSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + Direccion);
+        rb.AddForce(transform.forward* input * Vel_Tanque);
+        
     }
-
     void rotartanque(float Rot_input){
         // Solo rotar si hay entrada de rotación (Rot_input != 0)
        if (Rot_input != 0){
-            float newRotSpeed = CurrentSpeed != 0? Mathf.Abs(CurrentSpeed / Vel_Tanque) * Vel_Rotacion : Vel_Rotacion;
             float direccionRotacion = reverse ? -1f : 1f;
-            float rotacion = Rot_input * newRotSpeed * direccionRotacion * Time.fixedDeltaTime;
+            rotacion = Rot_input * Vel_Rotacion /** direccionRotacion*/ * Time.fixedDeltaTime;
             Quaternion rotar = Quaternion.Euler(0f, rotacion, 0f);
             rb.MoveRotation(rb.rotation * rotar);
         }
