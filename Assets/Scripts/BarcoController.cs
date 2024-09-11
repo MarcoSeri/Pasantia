@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Compilation;
 using UnityEngine;
+using TMPro;
 
 public class BarcoController : MonoBehaviour{
     private Rigidbody rb;
@@ -11,13 +12,13 @@ public class BarcoController : MonoBehaviour{
     [SerializeField] private float Vel_Rotacion = 120f;
     [SerializeField] private float aceleracion = 30f;
     [SerializeField] private float desaceleracion = 150f;
-
+    [SerializeField] private TMP_Text distancia;
     private float mov_input;
     private float rot_input;
-    private float CurrentSpeed = 0;
-    private float CurrentDireccion = 1;
     private bool reverse = false;
-    private float rotacion=0;
+    private float rotacion = 0;
+
+    private string textin;
 
     // Start is called before the first frame update
     void Start(){
@@ -37,6 +38,8 @@ public class BarcoController : MonoBehaviour{
     void FixedUpdate(){
         movertanque(mov_input);
         rotartanque(rot_input);
+        float pos_ant = float.Parse(distancia.text);
+        distancia.text = score(transform.position.z*10,pos_ant);
     }
 
     void movertanque(float input){
@@ -44,7 +47,6 @@ public class BarcoController : MonoBehaviour{
         
     }
     void rotartanque(float Rot_input){
-        // Solo rotar si hay entrada de rotación (Rot_input != 0)
        if (Rot_input != 0){
             float direccionRotacion = reverse ? -1f : 1f;
             rotacion = Rot_input * Vel_Rotacion /** direccionRotacion*/ * Time.fixedDeltaTime;
@@ -52,4 +54,16 @@ public class BarcoController : MonoBehaviour{
             rb.MoveRotation(rb.rotation * rotar);
         }
     }
+
+    public string score(float pos, float pos_ant){
+        if(pos > pos_ant){
+            pos = Mathf.Round(pos / 10) * 10;
+            return pos.ToString();
+        }
+        else if(pos < pos_ant)
+            return pos_ant.ToString();
+        return "0";
+
+    }
+
 }
