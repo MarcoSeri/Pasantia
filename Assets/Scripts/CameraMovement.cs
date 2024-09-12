@@ -8,6 +8,9 @@ public class CameraMovement : MonoBehaviour{
     }
 
     void FixedUpdate(){
-        transform.Translate(new Vector3(0,0,velocidad), Space.World);
+    }
+    public void MoveCamera(float dificulty){
+            transform.Translate(new Vector3(0,0,velocidad*dificulty*Time.deltaTime), Space.World);
     }
 }
+

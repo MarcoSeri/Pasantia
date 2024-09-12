@@ -40,8 +40,7 @@ public class BarcoController : MonoBehaviour{
     }
 
     void movertanque(float input){
-        rb.AddForce(transform.forward* input * Vel_Tanque);
-        
+        rb.AddForce(transform.forward* input * Vel_Tanque); 
     }
     void rotartanque(float Rot_input){
        if (Rot_input != 0){
