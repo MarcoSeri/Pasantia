@@ -12,7 +12,6 @@ public class BarcoController : MonoBehaviour{
     [SerializeField] private float Vel_Rotacion = 120f;
     [SerializeField] private float aceleracion = 30f;
     [SerializeField] private float desaceleracion = 150f;
-    [SerializeField] private TMP_Text distancia;
     private float mov_input;
     private float rot_input;
     private bool reverse = false;
@@ -38,8 +37,6 @@ public class BarcoController : MonoBehaviour{
     void FixedUpdate(){
         movertanque(mov_input);
         rotartanque(rot_input);
-        float pos_ant = float.Parse(distancia.text);
-        distancia.text = score(transform.position.z*10,pos_ant);
     }
 
     void movertanque(float input){
@@ -54,16 +51,4 @@ public class BarcoController : MonoBehaviour{
             rb.MoveRotation(rb.rotation * rotar);
         }
     }
-
-    public string score(float pos, float pos_ant){
-        if(pos > pos_ant){
-            pos = Mathf.Round(pos / 10) * 10;
-            return pos.ToString();
-        }
-        else if(pos < pos_ant)
-            return pos_ant.ToString();
-        return "0";
-
-    }
-
 }
