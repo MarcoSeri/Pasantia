@@ -6,7 +6,14 @@ using UnityEngine;
 [Serializable]
 public abstract class GameBaseState : MonoBehaviour
 {
-    public abstract void EnterState(GameManager gameManager);
-    public abstract void UpdateState(GameManager gameManager);
-    public abstract void ExitState(GameManager gameManager);
+    GameManager gameManager;
+    protected StateManager StateManager;
+    private void Awake()
+    {
+        StateManager = GetComponent<StateManager>();            
+    }
+    public abstract void EnterState();
+    public abstract void UpdateState();
+    public abstract void ExitState();
+
 }

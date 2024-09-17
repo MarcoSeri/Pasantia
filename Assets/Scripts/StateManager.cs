@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-    public List<GameBaseState> states;
+    public List<GameBaseState> States;
+    private int currentStateIndex;
+    private GameBaseState currentState;
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentStateIndex = 0;
+        currentState = States[currentStateIndex];
+        currentState.EnterState();  
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        currentState.UpdateState();
     }
 
-    //Saber el estado actual
-    //Pasar al siguiente estado
-    //Volver al estado anterior
+    public void NextState()
+    {
+        currentStateIndex++;
+    }
+    //Saber el estado actual CurrentState()
+    //Pasar al siguiente estado NextState() -> currentState.Exit, Current=next, currentState.Enter
+    //Volver al estado anterior BackState()
+    //Ir a un state en especifico ChangeState(State)
 }
