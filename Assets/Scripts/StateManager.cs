@@ -5,12 +5,11 @@ using UnityEngine;
 public class StateManager : MonoBehaviour
 {
     public List<GameBaseState> States;
-    private int currentStateIndex;
+    private int currentStateIndex=0;
     private GameBaseState currentState;
     // Start is called before the first frame update
     void Start()
     {
-        currentStateIndex = 0;
         currentState = States[currentStateIndex];
         currentState.EnterState();  
     }
@@ -23,7 +22,10 @@ public class StateManager : MonoBehaviour
 
     public void NextState()
     {
+        currentState.ExitState();
         currentStateIndex++;
+        currentState = States[currentStateIndex];
+        currentState.EnterState();
     }
     //Saber el estado actual CurrentState()
     //Pasar al siguiente estado NextState() -> currentState.Exit, Current=next, currentState.Enter

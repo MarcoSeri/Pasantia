@@ -496,6 +496,7 @@ GameObject:
   - component: {fileID: 1645750098}
   - component: {fileID: 1645750097}
   - component: {fileID: 1645750096}
+  - component: {fileID: 1645750099}
   m_Layer: 0
   m_Name: StateManager
   m_TagString: Untagged
@@ -532,6 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   States:
   - {fileID: 1645750096}
+  - {fileID: 1645750099}
 --- !u!4 &1645750098
 Transform:
   m_ObjectHideFlags: 0
@@ -547,6 +549,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1645750099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645750095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1128041733117db4c803e2f514fbabeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gamecontroler: {fileID: 2131050010}
 --- !u!114 &1995861959 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6415277884633716991, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
@@ -627,7 +642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2131050010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,11 +689,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 969.82996
+      value: 969.83
       objectReference: {fileID: 0}
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 580.57477
+      value: 580.5748
       objectReference: {fileID: 0}
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -712,9 +727,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2826183938749424114, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_Name
       value: Mapa
+      objectReference: {fileID: 0}
+    - target: {fileID: 8502384937736356364, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -969.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8502384937736356364, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -580.5748
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -846,6 +873,10 @@ PrefabInstance:
     - target: {fileID: 9015840482845620308, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
       propertyPath: m_Name
       value: Barco
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015840482845620308, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -17,7 +17,6 @@ public class MenuState : GameBaseState
 
     void OnStartPressed()
     {
-        uiManager.Close("Menu");
         StateManager.NextState();
     }
     void OnSalirPressed()
@@ -32,7 +31,7 @@ public class MenuState : GameBaseState
     }
     public override void ExitState()
     {
-//UIManager.Close(Menu)
+        uiManager.Close("Menu");
     }
 
 }

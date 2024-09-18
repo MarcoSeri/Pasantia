@@ -1,18 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameplayState : MonoBehaviour
+public class GameplayState : GameBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameController gamecontroler;
+    [SerializeField] private BarcoController barcocontroler;
+
+    private void Awake() {
+        gamecontroler.gameObject.SetActive(false);
+        barcocontroler.gameObject.SetActive(false);
+    }
+    public override void EnterState()
     {
-        
+        gamecontroler.gameObject.SetActive(true);
+        barcocontroler.gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void ExitState()
     {
-        
+        gamecontroler.gameObject.SetActive(false);
+        barcocontroler.gameObject.SetActive(false);
+    }
+
+    public override void UpdateState()
+    {
+
+    }
+
+    void Start()
+    {
+
     }
 }

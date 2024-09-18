@@ -5,7 +5,7 @@ using UnityEngine;
 public class UiManager : MonoBehaviour
 {
     [SerializeField] GameObject Menu;
-    [SerializeField] GameObject gameplay;
+    [SerializeField] GameObject gameplay; //preguntar por esto
 
     public void Open(string caso)
     {
