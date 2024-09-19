@@ -9,30 +9,32 @@ public class GameplayState : GameBaseState
     [SerializeField] private GameController gamecontroler;
     [SerializeField] private BarcoController barcocontroler;
     [SerializeField] private ColliderController borde;
-
+   
     private void Awake() {
-        gamecontroler.gameObject.SetActive(false);
-        barcocontroler.gameObject.SetActive(false);
+        base.Awake();
         borde.gameObject.SetActive(false);
     }
     public override void EnterState()
     {
-        gamecontroler.gameObject.SetActive(true);
-        barcocontroler.gameObject.SetActive(true);
+        gamecontroler.OnGame = true;
         borde.gameObject.SetActive(true);
+        borde.BoatCrashed += EndGame;
+        gamecontroler.SetUp();
     }
 
     public override void ExitState()
     {
-        gamecontroler.gameObject.SetActive(false);
-        barcocontroler.gameObject.SetActive(false);
+        gamecontroler.OnGame = false;
+        borde.BoatCrashed -= EndGame;
         borde.gameObject.SetActive(false);
     }
 
     public override void UpdateState()
     {
-        if(borde.crashed == true){
-            StateManager.NextState();
-        }        
+    }
+
+    private void EndGame()
+    {
+        StateManager.ChangeState(2);     
     }
 }

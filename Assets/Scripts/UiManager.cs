@@ -21,7 +21,6 @@ public class UiManager : MonoBehaviour
                 break;
 
             case "lose":
-                Debug.Log("Gaspi te amo");
                 lose.SetActive(true);
                 break;
         }

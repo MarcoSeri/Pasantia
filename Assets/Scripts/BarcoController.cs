@@ -10,8 +10,7 @@ public class BarcoController : MonoBehaviour{
 
     [SerializeField] private float Vel_Tanque = 15f;
     [SerializeField] private float Vel_Rotacion = 120f;
-    [SerializeField] private float aceleracion = 30f;
-    [SerializeField] private float desaceleracion = 150f;
+    [SerializeField] private GameController GC;
     private float mov_input;
     private float rot_input;
     private bool reverse = false;
@@ -26,6 +25,8 @@ public class BarcoController : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
+        if (GC.OnGame == true)
+        {
         mov_input = Input.GetAxisRaw("Vertical");
         rot_input = Input.GetAxisRaw("Horizontal");
 
@@ -33,10 +34,14 @@ public class BarcoController : MonoBehaviour{
             reverse = true;
         else if (mov_input > 0)
             reverse = false;
+        }
     }
     void FixedUpdate(){
+        if(GC.OnGame == true)
+        {
         movertanque(mov_input);
         rotartanque(rot_input);
+        }
     }
 
     void movertanque(float input){
@@ -49,5 +54,10 @@ public class BarcoController : MonoBehaviour{
             Quaternion rotar = Quaternion.Euler(0f, rotacion, 0f);
             rb.MoveRotation(rb.rotation * rotar);
         }
+    }
+    public void DeleteForce()
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }

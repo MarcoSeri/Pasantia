@@ -485,7 +485,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2852044019863120274, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
   m_PrefabInstance: {fileID: 5716891765531424483}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909730039}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0413b9f9691b6240abf1a86507531a0, type: 3}
@@ -603,11 +603,6 @@ MonoBehaviour:
   Start: {fileID: 1542091186}
   Salir: {fileID: 57163775}
   uiManager: {fileID: 930778116}
---- !u!1 &1909730039 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9015840482845620308, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
-  m_PrefabInstance: {fileID: 5716891765531424483}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1995861959 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6415277884633716991, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
@@ -685,8 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64caa9b71bf4354bbdc99e2ae73d4f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  other: {fileID: 1909730039}
-  crashed: 0
+  boat: {fileID: 0}
 --- !u!1 &2131050009
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +719,7 @@ MonoBehaviour:
   - 2
   - 3
   - 4
+  OnGame: 0
 --- !u!4 &2131050011
 Transform:
   m_ObjectHideFlags: 0
@@ -919,6 +914,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2852044019863120274, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
+      propertyPath: GC
+      value: 
+      objectReference: {fileID: 2131050010}
     - target: {fileID: 9015840482845620308, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
       propertyPath: m_Name
       value: Barco

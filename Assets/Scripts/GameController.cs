@@ -10,20 +10,31 @@ public class GameController : MonoBehaviour
 
     [SerializeField] int[] pointToReach;
     [SerializeField] float[] dificulties;
+    public int Points => maxPointsReached;
+    public bool OnGame = false;
     int maxPointsReached = 0;
     float dificulty = 1;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+    }
+
+    public void SetUp() 
+    {
+        camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y,0);
+        barco.transform.position = new Vector3(0, barco.transform.position.y, 0);
+        barco.transform.rotation = new Quaternion(0, 0, 0, 0);
+        barco.DeleteForce();
     }
 
     // Update is called once per frame
     void Update(){
-        maxPointsReached = score(barco.transform.position.z*10, maxPointsReached);
-        ui.ShowScore(maxPointsReached);
-        MoveCamera();
+        if (OnGame == true)
+        {
+            maxPointsReached = score(barco.transform.position.z*10, maxPointsReached);
+            ui.ShowScore(maxPointsReached);
+            MoveCamera();
+        }
     }
     public int score(float pos, float pos_ant)
     {

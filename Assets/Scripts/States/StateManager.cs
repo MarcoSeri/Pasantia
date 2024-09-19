@@ -32,6 +32,7 @@ public class StateManager : MonoBehaviour
     {
         currentState.ExitState();
         currentState = States[index];
+        currentStateIndex = index;
         currentState.EnterState();
     }
     //Saber el estado actual CurrentState()

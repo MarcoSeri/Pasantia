@@ -8,9 +8,10 @@ public class MenuState : GameBaseState
     [SerializeField] private Button Start;
     [SerializeField] private Button Salir;
     [SerializeField] private UiManager uiManager;
+   
     public override void EnterState()
     {
-        //UIManager.Open(Menu)
+        uiManager.Open("Menu");
         Start.onClick.AddListener(OnStartPressed);
         Salir.onClick.AddListener(OnSalirPressed);
     }
@@ -31,6 +32,8 @@ public class MenuState : GameBaseState
     }
     public override void ExitState()
     {
+        Start.onClick.RemoveListener(OnStartPressed);
+        Salir.onClick.RemoveListener(OnSalirPressed);
         uiManager.Close("Menu");
     }
 

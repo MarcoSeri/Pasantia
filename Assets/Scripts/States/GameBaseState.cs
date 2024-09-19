@@ -8,12 +8,12 @@ public abstract class GameBaseState : MonoBehaviour
 {
     GameManager gameManager;
     protected StateManager StateManager;
-    private void Awake()
+    protected void Awake()
     {
-        StateManager = GetComponent<StateManager>();            
+        StateManager = GetComponent<StateManager>();
     }
     public abstract void EnterState();
     public abstract void UpdateState();
     public abstract void ExitState();
-
+    
 }

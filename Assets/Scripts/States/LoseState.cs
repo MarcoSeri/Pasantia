@@ -8,7 +8,7 @@ public class LoseState : GameBaseState
     [SerializeField] private Button Start;
     [SerializeField] private Button Salir;
     [SerializeField] private UiManager uiManager;
-    
+
     public override void EnterState()
     {
         uiManager.Open("lose");
@@ -18,7 +18,7 @@ public class LoseState : GameBaseState
 
     void OnStartPressed()
     {
-        StateManager.ChangeState(1);
+        StateManager.ChangeState(0);
     }
     void OnSalirPressed()
     {

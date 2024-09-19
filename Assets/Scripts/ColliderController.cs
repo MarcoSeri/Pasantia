@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ColliderController : MonoBehaviour
 {
     private Collider borde;
-    [SerializeField] private GameObject other;
-    public bool crashed = false;
+    [SerializeField] private BarcoController boat;
+    public Action BoatCrashed;
 
     void Start()
     {
-    borde = GetComponent<Collider>();
+        borde = GetComponent<Collider>();
+    
     }
 
     void Update()
@@ -21,7 +23,7 @@ public class ColliderController : MonoBehaviour
     public void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player"))
         {
-            crashed = true;
+            BoatCrashed.Invoke();
         }
     }
 }
