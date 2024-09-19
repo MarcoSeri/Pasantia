@@ -27,6 +27,13 @@ public class StateManager : MonoBehaviour
         currentState = States[currentStateIndex];
         currentState.EnterState();
     }
+
+    public void ChangeState(int index)
+    {
+        currentState.ExitState();
+        currentState = States[index];
+        currentState.EnterState();
+    }
     //Saber el estado actual CurrentState()
     //Pasar al siguiente estado NextState() -> currentState.Exit, Current=next, currentState.Enter
     //Volver al estado anterior BackState()

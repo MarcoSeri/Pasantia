@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     [SerializeField] int[] pointToReach;
     [SerializeField] float[] dificulties;
     int maxPointsReached = 0;
-    int distanceReached = 0;
     float dificulty = 1;
 
     // Start is called before the first frame update

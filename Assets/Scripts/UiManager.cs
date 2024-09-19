@@ -6,6 +6,11 @@ public class UiManager : MonoBehaviour
 {
     [SerializeField] GameObject Menu;
     [SerializeField] GameObject gameplay; //preguntar por esto
+    [SerializeField] GameObject lose;
+
+    private void Awake() {
+        lose.gameObject.SetActive(false);
+    }
 
     public void Open(string caso)
     {
@@ -13,6 +18,11 @@ public class UiManager : MonoBehaviour
         {
             case "Menu":
                 Menu.SetActive(true);
+                break;
+
+            case "lose":
+                Debug.Log("Gaspi te amo");
+                lose.SetActive(true);
                 break;
         }
     }
@@ -22,6 +32,10 @@ public class UiManager : MonoBehaviour
         {
             case "Menu":
                 Menu.SetActive(false);
+                break;
+
+            case "lose":
+                lose.SetActive(false);
                 break;
         }
     }
