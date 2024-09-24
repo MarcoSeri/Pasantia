@@ -8,17 +8,20 @@ public class LoseState : GameBaseState
     [SerializeField] private Button Start;
     [SerializeField] private Button Salir;
     [SerializeField] private UiManager uiManager;
+    [SerializeField] private UiControllerLose uiController;
+    [SerializeField] private GameController Gameplay;
 
     public override void EnterState()
     {
         uiManager.Open("lose");
+        uiController.ShowFinalScore(Gameplay.Points);
         Start.onClick.AddListener(OnStartPressed);
         Salir.onClick.AddListener(OnSalirPressed);
     }
 
     void OnStartPressed()
     {
-        StateManager.ChangeState(0);
+        StateManager.ChangeState(1);
     }
     void OnSalirPressed()
     {
@@ -27,6 +30,8 @@ public class LoseState : GameBaseState
 
     public override void ExitState()
     {
+        Start.onClick.RemoveListener(OnStartPressed);
+        Salir.onClick.RemoveListener(OnSalirPressed);
         uiManager.Close("lose");
     }
 

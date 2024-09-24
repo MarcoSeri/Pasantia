@@ -24,11 +24,13 @@ public class StateManager : MonoBehaviour
     {
         currentState.ExitState();
         currentStateIndex++;
+        if (currentStateIndex == States.Count)
+            currentStateIndex = 0;
         currentState = States[currentStateIndex];
         currentState.EnterState();
     }
 
-    public void ChangeState(int index)
+   public void ChangeState(int index)
     {
         currentState.ExitState();
         currentState = States[index];

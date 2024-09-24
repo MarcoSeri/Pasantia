@@ -16,8 +16,6 @@ public class BarcoController : MonoBehaviour{
     private bool reverse = false;
     private float rotacion = 0;
 
-    private string textin;
-
     // Start is called before the first frame update
     void Start(){
         rb = GetComponent<Rigidbody>();
