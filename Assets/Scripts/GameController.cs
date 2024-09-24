@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     {
         barco.DeleteForce();
         camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y,0);
+        Physics.SyncTransforms();
         barco.transform.position = new Vector3(0, barco.transform.position.y, 0);
         barco.transform.rotation = new Quaternion(0, 0, 0, 0);
         maxPointsReached = 0;
