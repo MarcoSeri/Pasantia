@@ -21,7 +21,7 @@ public class LoseState : GameBaseState
 
     void OnStartPressed()
     {
-        StateManager.ChangeState(1);
+        StateManager.ChangeState(2);
     }
     void OnSalirPressed()
     {

@@ -7,6 +7,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject Menu;
     [SerializeField] GameObject gameplay; //preguntar por esto
     [SerializeField] GameObject lose;
+    [SerializeField] GameObject tutorial;
 
     private void Awake() {
         lose.gameObject.SetActive(false);
@@ -23,6 +24,9 @@ public class UiManager : MonoBehaviour
             case "lose":
                 lose.SetActive(true);
                 break;
+            case "tutorial":
+                tutorial.SetActive(true);
+                break;
         }
     }
     public void Close(string caso)
@@ -35,6 +39,9 @@ public class UiManager : MonoBehaviour
 
             case "lose":
                 lose.SetActive(false);
+                break;
+            case "tutorial":
+                tutorial.SetActive(false);
                 break;
         }
     }
