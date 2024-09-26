@@ -5,60 +5,75 @@ using UnityEditor.Compilation;
 using UnityEngine;
 using TMPro;
 
-public class BarcoController : MonoBehaviour{
+public class BarcoController : MonoBehaviour {
     private Rigidbody rb;
 
     [SerializeField] private float Vel_Tanque = 15f;
     [SerializeField] private float Vel_Rotacion = 120f;
-    [SerializeField] private GameController GC;
+    [SerializeField] private GameController GameController;
+    [SerializeField] private Animator animator;
+
     private float mov_input;
     private float rot_input;
-    private bool reverse = false;
     private float rotacion = 0;
 
     // Start is called before the first frame update
-    void Start(){
+    void Start() {
         rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update(){
-        if (GC.OnGame == true)
+    void Update() {
+        if (GameController.OnGame == true)
         {
-        mov_input = Input.GetAxisRaw("Vertical");
-        rot_input = Input.GetAxisRaw("Horizontal");
-
-        if (mov_input < 0)
-            reverse = true;
-        else if (mov_input > 0)
-            reverse = false;
+            mov_input = Input.GetAxisRaw("Vertical");
+            rot_input = Input.GetAxisRaw("Horizontal");
         }
     }
-    void FixedUpdate(){
-        if(GC.OnGame == true)
-        {
-        movertanque(mov_input);
-        rotartanque(rot_input);
-        }
-    }
+        void FixedUpdate() {
+            if (GameController.OnGame == true)
+            {
+                movertanque(mov_input);
+                rotartanque(rot_input);
+            }
 
-    void movertanque(float input){
-        if (input < 0)
-        rb.AddForce(transform.forward* input * Vel_Tanque * 0.6f); 
+            if(mov_input != 0 && rot_input != 0)
+            {
+            if (rot_input < 0)
+                animator.SetFloat("DerSpeed", 2);
+            else
+                animator.SetFloat("IzqSpeed", 2);
+            }
         else
-            rb.AddForce(transform.forward* input * Vel_Tanque); 
+        {
+            animator.SetFloat("IzqSpeed", 1);
+            animator.SetFloat("DerSpeed", 1);
+        }
+
     }
-    void rotartanque(float Rot_input){
-       if (Rot_input != 0){
-            float direccionRotacion = reverse ? -1f : 1f;
-            rotacion = Rot_input * Vel_Rotacion /** direccionRotacion*/ * Time.fixedDeltaTime;
-            Quaternion rotar = Quaternion.Euler(0f, rotacion, 0f);
-            rb.MoveRotation(rb.rotation * rotar);
+
+        void movertanque(float input) {
+            if (input < 0)
+                rb.AddForce(transform.forward * input * Vel_Tanque * 0.6f);
+            else
+                rb.AddForce(transform.forward * input * Vel_Tanque);
+
+            animator.SetInteger("Movimiento", (int)input);
+        }
+        void rotartanque(float Rot_input) {
+            if (Rot_input != 0) {
+                rotacion = Rot_input * Vel_Rotacion * Time.fixedDeltaTime;
+                Quaternion rotar = Quaternion.Euler(0f, rotacion, 0f);
+                rb.MoveRotation(rb.rotation * rotar);
+            }
+
+            animator.SetBool("RotateRight", Rot_input > 0 ? true : false);
+            animator.SetBool("RotateLeft", Rot_input < 0 ? true : false);
+        }
+        
+        public void DeleteForce()
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
     }
-    public void DeleteForce()
-    {
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-    }
-}

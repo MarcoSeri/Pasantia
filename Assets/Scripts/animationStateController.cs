@@ -25,7 +25,7 @@ public class animationStateController : MonoBehaviour
 
         if(!isGirandoDerecha && GiraDerecha)
         {
-            animator.SetBool("GiraDerecha", true);
+            //animator.SetFloat("GiraDerecha", true);
         }
         if(isGirandoDerecha && !GiraDerecha)
         {

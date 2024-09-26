@@ -1114,6 +1114,10 @@ PrefabInstance:
       propertyPath: GC
       value: 
       objectReference: {fileID: 2131050010}
+    - target: {fileID: 2852044019863120274, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
+      propertyPath: GameController
+      value: 
+      objectReference: {fileID: 2131050010}
     - target: {fileID: 9015840482845620308, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
       propertyPath: m_Name
       value: Barco
