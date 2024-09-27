@@ -10,6 +10,6 @@ public class UiControllerLose : MonoBehaviour
 
     public void ShowFinalScore(int score)
     {
-        Score.text = string.Format("GG hiciste {0} puntos ", score);
+        Score.text = string.Format("Hiciste {0} puntos ", score);
     }
 }

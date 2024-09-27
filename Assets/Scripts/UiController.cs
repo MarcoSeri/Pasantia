@@ -9,7 +9,7 @@ public class UiController : MonoBehaviour
 
     public void ShowScore(int score)
     {
-        distancia.text = string.Format("Score: {0}", score);
+        distancia.text = string.Format("Puntuacion: {0}", score);
     }
 
 }
