@@ -421,6 +421,7 @@ Transform:
   m_Children:
   - {fileID: 2005911730}
   - {fileID: 1115566173}
+  - {fileID: 2080660354}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
 --- !u!114 &963194229
@@ -667,6 +668,7 @@ MonoBehaviour:
   gamecontroler: {fileID: 2131050010}
   barcocontroler: {fileID: 1536528336}
   borde: {fileID: 2005911731}
+  spawner: {fileID: 2080660353}
 --- !u!114 &1645750100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,7 +732,7 @@ MonoBehaviour:
   pools:
   - tag: Basic
     prefab: {fileID: 7706424776572715413, guid: 10f2ff2d93e511b469bd3e7f5db64270, type: 3}
-    size: 5
+    size: 3
 --- !u!4 &1811069391
 Transform:
   m_ObjectHideFlags: 0
@@ -873,12 +875,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080660352}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 40.1}
+  m_LocalRotation: {x: -0.6427876, y: -0, z: -0, w: 0.7660445}
+  m_LocalPosition: {x: 0, y: 18.72, z: 24.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2096298485 stripped
 MonoBehaviour:
@@ -1207,7 +1209,6 @@ SceneRoots:
   - {fileID: 2131050011}
   - {fileID: 369767786}
   - {fileID: 1645750098}
+  - {fileID: 1811069391}
   - {fileID: 5482801536745383053}
   - {fileID: 1974266425127219543}
-  - {fileID: 1811069391}
-  - {fileID: 2080660354}
