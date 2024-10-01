@@ -732,7 +732,13 @@ MonoBehaviour:
   pools:
   - tag: Basic
     prefab: {fileID: 7706424776572715413, guid: 10f2ff2d93e511b469bd3e7f5db64270, type: 3}
-    size: 3
+    size: 10
+  - tag: Mapa1
+    prefab: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
+    size: 2
+  - tag: Mapa2
+    prefab: {fileID: 3279543999748263151, guid: 071f7450319f33743bd89e18d72a1269, type: 3}
+    size: 2
 --- !u!4 &1811069391
 Transform:
   m_ObjectHideFlags: 0
@@ -742,7 +748,7 @@ Transform:
   m_GameObject: {fileID: 1811069389}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.72533, y: 3.6464999, z: 23.23311}
+  m_LocalPosition: {x: 2.72533, y: 3.6465, z: 23.23311}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -807,8 +813,8 @@ Transform:
   m_GameObject: {fileID: 2005911728}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6427876, y: -0, z: -0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: -11.05646, z: 19.110397}
-  m_LocalScale: {x: 35.25299, y: 1.1854999, z: 1}
+  m_LocalPosition: {x: 0, y: -11.41, z: 19.05}
+  m_LocalScale: {x: 35.25299, y: 1.1855, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 963194228}
@@ -867,6 +873,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPol: {fileID: 1811069390}
+  timeToSpawn: 5
+  timeToStartSpawning: 1
+  gamecontrol: {fileID: 2131050010}
+  boat: {fileID: 1536528336}
+  mapTags: []
 --- !u!4 &2080660354
 Transform:
   m_ObjectHideFlags: 0
@@ -925,6 +936,7 @@ MonoBehaviour:
   barco: {fileID: 1536528336}
   ui: {fileID: 172262282}
   camara: {fileID: 963194229}
+  spawner: {fileID: 2080660353}
   pointToReach: 00000000f4010000d007000088130000
   dificulties:
   - 1
@@ -932,6 +944,7 @@ MonoBehaviour:
   - 3
   - 4
   OnGame: 0
+  maxPointsReached: 0
 --- !u!4 &2131050011
 Transform:
   m_ObjectHideFlags: 0
@@ -965,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 351.0809
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1125,6 +1138,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1974266425127219543}
     m_Modifications:
+    - target: {fileID: 2396386255973752982, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000003090862
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396386255973752982, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00000003090862
+      objectReference: {fileID: 0}
     - target: {fileID: 2824799027149369258, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

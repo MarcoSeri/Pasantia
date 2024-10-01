@@ -9,7 +9,7 @@ public class GameplayState : GameBaseState
     [SerializeField] private GameController gamecontroler;
     [SerializeField] private BarcoController barcocontroler;
     [SerializeField] private ColliderController borde;
-    [SerializeField] private SpawnController spawner;
+    [SerializeField] private ObstacleSpawner spawner;
    
      private void Awake() {
         base.Awake();

@@ -7,13 +7,15 @@ public class GameController : MonoBehaviour
     [SerializeField] BarcoController barco;
     [SerializeField] UiController ui;
     [SerializeField] CameraMovement camara;
+    [SerializeField] ObstacleSpawner spawner;
 
     [SerializeField] int[] pointToReach;
     [SerializeField] float[] dificulties;
     public int Points => maxPointsReached;
     public bool OnGame = false;
-    int maxPointsReached = 0;
+    public int maxPointsReached = 0;
     float dificulty = 1;
+    float currentDificulty = 1;
 
     void Start()
     {
@@ -60,6 +62,12 @@ public class GameController : MonoBehaviour
             {
                 dificulty = dificulties[i];
             }
+        }
+
+        if (dificulty != currentDificulty && dificulty < 4)
+        {
+            spawner.timeToSpawn = spawner.timeToSpawn / dificulty;      
+            currentDificulty = dificulty;
         }
 
         camara.MoveCamera(dificulty);
