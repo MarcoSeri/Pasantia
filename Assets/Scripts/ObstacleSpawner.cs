@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
 
 public class ObstacleSpawner : MonoBehaviour
 {
@@ -10,21 +11,25 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private GameController gamecontrol;
     [SerializeField] private BarcoController boat;
     [SerializeField] private string[] mapTags;
+    private bool mapWasDisplayed = false;
 
     Coroutine spawnRoutine;
 
-    public void Start() {
+    private void Update()
+    {
+        if(boat.distance % 25 == 0 && mapWasDisplayed == false)
+        {
+            SpawnMap();
+            mapWasDisplayed = true;
+        }
+        else if(boat.distance % 25 != 0)
+            mapWasDisplayed = false;
+    }
+
+    public void StartBasicCoroutine(){
         spawnRoutine = StartCoroutine(SpawnCoroutine());
     }
 
-    private void Update()
-    {
-        if(boat.distance % 25 == 0)
-        {
-            Debug.Log("mapa");
-            SpawnMap();
-        }
-    }
     IEnumerator SpawnCoroutine()
     {
         yield return new WaitForSeconds(timeToStartSpawning);
@@ -34,6 +39,7 @@ public class ObstacleSpawner : MonoBehaviour
             yield return new WaitForSeconds(timeToSpawn);            
         }
     }
+
     public void spawnObstacle()
     {
         //string tag = basicTags[Random.Range(0, basicTags.Length)];
@@ -47,19 +53,19 @@ public class ObstacleSpawner : MonoBehaviour
         SpawnSingleRock(new Vector3(x, transform.position.y, transform.position.z));
     }
 
-    public void SpawnMap()
-    {
-        string tag = mapTags[Random.Range(0, mapTags.Length-1)];
-        objectPol.SpawnFromPool(tag, new Vector3(0,0,20), Quaternion.identity);
-    }
-
     public void SpawnSingleRock(Vector3 position)
     {
         objectPol.SpawnFromPool("Basic", position, Quaternion.identity);
     }
 
+    public void SpawnMap()
+    {
+        string tag = mapTags[Random.Range(0, mapTags.Length)];
+        //objectPol.SpawnFromPool(tag, new Vector3(0,0,boat.distance+31.27f), Quaternion.identity);
+    }
     public void StopSpawner()
     {
         StopCoroutine(spawnRoutine);
+        objectPol.DesPawnAll();
     }
 }

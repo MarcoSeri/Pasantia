@@ -66,4 +66,7 @@ public class ObjectPooler : MonoBehaviour
 
         return objectToSpawn;
     }
+
+    public void DesPawnAll(){
+    }
 }

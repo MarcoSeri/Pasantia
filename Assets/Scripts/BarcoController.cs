@@ -13,7 +13,7 @@ public class BarcoController : MonoBehaviour {
     [SerializeField] private GameController GameController;
     [SerializeField] private Animator animator;
     
-    public float distance;
+    public int distance;
     private float mov_input;
     private float rot_input;
     private float rotacion = 0;
@@ -30,7 +30,7 @@ public class BarcoController : MonoBehaviour {
             mov_input = Input.GetAxisRaw("Vertical");
             rot_input = Input.GetAxisRaw("Horizontal");
         }
-        distance = transform.position.z;
+        distance = Mathf.RoundToInt(transform.position.z);
     }
         void FixedUpdate() {
             if (GameController.OnGame == true)

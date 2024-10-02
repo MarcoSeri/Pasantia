@@ -735,10 +735,10 @@ MonoBehaviour:
     size: 10
   - tag: Mapa1
     prefab: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
-    size: 2
+    size: 1
   - tag: Mapa2
-    prefab: {fileID: 3279543999748263151, guid: 071f7450319f33743bd89e18d72a1269, type: 3}
-    size: 2
+    prefab: {fileID: 3279543999748263151, guid: 76239ddb599c09d45b23dbf317df1522, type: 3}
+    size: 1
 --- !u!4 &1811069391
 Transform:
   m_ObjectHideFlags: 0
@@ -877,7 +877,9 @@ MonoBehaviour:
   timeToStartSpawning: 1
   gamecontrol: {fileID: 2131050010}
   boat: {fileID: 1536528336}
-  mapTags: []
+  mapTags:
+  - Mapa1
+  - Mapa2
 --- !u!4 &2080660354
 Transform:
   m_ObjectHideFlags: 0
@@ -969,16 +971,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1974266425127219543}
     m_Modifications:
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 969.83
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 580.5748
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1011,6 +1017,10 @@ PrefabInstance:
     - target: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_Name
       value: Mapa
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1190,6 +1200,10 @@ PrefabInstance:
       propertyPath: GameController
       value: 
       objectReference: {fileID: 2131050010}
+    - target: {fileID: 7287694531694252705, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9015840482845620308, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
       propertyPath: m_Name
       value: Barco
