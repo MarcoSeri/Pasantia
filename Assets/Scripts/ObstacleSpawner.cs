@@ -21,6 +21,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if(camera.DisplayMap == true)
         {
+            Debug.Log("mapa");
             SpawnMap();
             camera.DisplayMap = false;
         }
@@ -84,6 +85,7 @@ public class ObstacleSpawner : MonoBehaviour
     public void StopSpawner()
     {
         StopCoroutine(spawnBasicCoroutine);
+        StopCoroutine(spawnLifebuoyCoroutine);
         objectPol.DesPawnAll();
     }
 }

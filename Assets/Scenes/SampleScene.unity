@@ -758,13 +758,13 @@ MonoBehaviour:
     size: 10
   - tag: Mapa1
     prefab: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
-    size: 2
+    size: 3
   - tag: Mapa2
     prefab: {fileID: 3279543999748263151, guid: a97366bcbd937ce4dbfb506adc616bff, type: 3}
-    size: 2
+    size: 3
   - tag: Lifebuoy
     prefab: {fileID: 7706424776572715413, guid: f398287cab5cea447a25d3b46da5d646, type: 3}
-    size: 5
+    size: 1
 --- !u!4 &1811069391
 Transform:
   m_ObjectHideFlags: 0
@@ -1167,6 +1167,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1974266425127219543}
     m_Modifications:
+    - target: {fileID: 1537483899637968180, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 7851838c53c887d42961da19a55cac4c, type: 2}
     - target: {fileID: 2396386255973752982, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.00000003090862
