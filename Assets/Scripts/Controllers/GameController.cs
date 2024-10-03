@@ -14,8 +14,8 @@ public class GameController : MonoBehaviour
     public int Points => maxPointsReached;
     public bool OnGame = false;
     public int maxPointsReached = 0;
-    float dificulty = 1;
-    float currentDificulty = 1;
+    private float dificulty = 1;
+    private float currentDificulty = 1;
 
     void Start()
     {

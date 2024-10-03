@@ -35,8 +35,8 @@ public class GameplayState : GameBaseState
         gamecontroler.OnGame = false;
         borde.BoatCrashed -= EndGame;
         borde.gameObject.SetActive(false);
-        spawner.StopSpawner();
         barcocontroler.DeleteForce();
+        spawner.StopSpawner();
     }
 
     public override void UpdateState()

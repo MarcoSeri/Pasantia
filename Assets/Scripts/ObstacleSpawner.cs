@@ -10,24 +10,25 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float timeToStartSpawning = 1f;
     [SerializeField] private GameController gamecontrol;
     [SerializeField] private BarcoController boat;
+    [SerializeField] private CameraMovement camera;
     [SerializeField] private string[] mapTags;
     private bool mapWasDisplayed = false;
 
-    Coroutine spawnRoutine;
+    Coroutine spawnBasicCoroutine;
+    Coroutine spawnLifebuoyCoroutine;
 
     private void Update()
     {
-        if(boat.distance % 25 == 0 && mapWasDisplayed == false)
+        if(camera.DisplayMap == true)
         {
             SpawnMap();
-            mapWasDisplayed = true;
+            camera.DisplayMap = false;
         }
-        else if(boat.distance % 25 != 0)
-            mapWasDisplayed = false;
     }
 
     public void StartBasicCoroutine(){
-        spawnRoutine = StartCoroutine(SpawnCoroutine());
+        spawnLifebuoyCoroutine = StartCoroutine(SpawnLifebuoyCoroutine());
+        spawnBasicCoroutine = StartCoroutine(SpawnCoroutine());
     }
 
     IEnumerator SpawnCoroutine()
@@ -40,6 +41,16 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
+    IEnumerator SpawnLifebuoyCoroutine()
+    {
+        yield return new WaitForSeconds(2);
+        while (gamecontrol.OnGame == true) //game is running
+        {
+            SpawnSingleLifebuoy();
+            yield return new WaitForSeconds(10);
+        }
+    }
+
     public void spawnObstacle()
     {
         //string tag = basicTags[Random.Range(0, basicTags.Length)];
@@ -48,7 +59,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SpawnSingleRock()
     {
-        float x = Random.Range(boat.transform.position.x-7,boat.transform.position.x+7);
+        float x = Random.Range(boat.transform.position.x-9,boat.transform.position.x+9);
         x = Mathf.Clamp(x, -15, 15);
         SpawnSingleRock(new Vector3(x, transform.position.y, transform.position.z));
     }
@@ -58,14 +69,21 @@ public class ObstacleSpawner : MonoBehaviour
         objectPol.SpawnFromPool("Basic", position, Quaternion.identity);
     }
 
+    public void SpawnSingleLifebuoy()
+    {
+        float x = Random.Range(boat.transform.position.x - 7, boat.transform.position.x + 7);
+        x = Mathf.Clamp(x, -15, 15);
+        objectPol.SpawnFromPool("Lifebuoy", new Vector3(x, transform.position.y+0.4f, transform.position.z), Quaternion.identity);
+    }
+
     public void SpawnMap()
     {
         string tag = mapTags[Random.Range(0, mapTags.Length)];
-        //objectPol.SpawnFromPool(tag, new Vector3(0,0,boat.distance+31.27f), Quaternion.identity);
+        objectPol.SpawnFromPool(tag, new Vector3(0,0,camera.transform.position.z+50.4f), Quaternion.identity);
     }
     public void StopSpawner()
     {
-        StopCoroutine(spawnRoutine);
+        StopCoroutine(spawnBasicCoroutine);
         objectPol.DesPawnAll();
     }
 }

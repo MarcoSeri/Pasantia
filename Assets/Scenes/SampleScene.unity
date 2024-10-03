@@ -340,6 +340,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -437,6 +438,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 3
+  DisplayMap: 0
+--- !u!65 &963194230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1115566172
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,10 +758,13 @@ MonoBehaviour:
     size: 10
   - tag: Mapa1
     prefab: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
-    size: 1
+    size: 2
   - tag: Mapa2
-    prefab: {fileID: 3279543999748263151, guid: 76239ddb599c09d45b23dbf317df1522, type: 3}
-    size: 1
+    prefab: {fileID: 3279543999748263151, guid: a97366bcbd937ce4dbfb506adc616bff, type: 3}
+    size: 2
+  - tag: Lifebuoy
+    prefab: {fileID: 7706424776572715413, guid: f398287cab5cea447a25d3b46da5d646, type: 3}
+    size: 5
 --- !u!4 &1811069391
 Transform:
   m_ObjectHideFlags: 0
@@ -877,6 +903,7 @@ MonoBehaviour:
   timeToStartSpawning: 1
   gamecontrol: {fileID: 2131050010}
   boat: {fileID: 1536528336}
+  camera: {fileID: 963194229}
   mapTags:
   - Mapa1
   - Mapa2
@@ -971,10 +998,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1974266425127219543}
     m_Modifications:
     - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219976341873979454, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1014,17 +1037,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2826183938749424114, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 115.1623
-      objectReference: {fileID: 0}
     - target: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_Name
       value: Mapa
-      objectReference: {fileID: 0}
-    - target: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
