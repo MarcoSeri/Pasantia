@@ -68,5 +68,12 @@ public class ObjectPooler : MonoBehaviour
     }
 
     public void DesPawnAll(){
+        
+        GameObject[] AllObstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+
+        for(int i = 0; i < AllObstacles.Length; i++)
+        {
+            AllObstacles[i].SetActive(false);
+        }
     }
 }

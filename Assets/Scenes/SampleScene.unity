@@ -1014,6 +1014,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2826183938749424114, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 115.1623
+      objectReference: {fileID: 0}
     - target: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_Name
       value: Mapa
