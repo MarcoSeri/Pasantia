@@ -17,12 +17,12 @@ public class GameplayState : GameBaseState
     }
     public override void EnterState()
     {
-        gamecontroler.SetUp();
        // StartCoroutine(WaitToStart());
         gamecontroler.OnGame = true;
         borde.gameObject.SetActive(true);
         spawner.StartBasicCoroutine();
         borde.BoatCrashed += EndGame;       
+        gamecontroler.SetUp();
     }
 
     private IEnumerator WaitToStart()

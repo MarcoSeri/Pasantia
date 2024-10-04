@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d64caa9b71bf4354bbdc99e2ae73d4f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boat: {fileID: 0}
+  boat: {fileID: 1536528336}
 --- !u!114 &2063975185 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6840578953098040422, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
@@ -899,6 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPol: {fileID: 1811069390}
+  realtimetoSpawn: 5
   timeToSpawn: 5
   timeToStartSpawning: 1
   gamecontrol: {fileID: 2131050010}
@@ -1040,6 +1041,10 @@ PrefabInstance:
     - target: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
       propertyPath: m_Name
       value: Mapa
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class ObstacleSpawner : MonoBehaviour
 {
     public ObjectPooler objectPol;
+    public float realtimetoSpawn = 5f;
     public float timeToSpawn = 5f;
     [SerializeField] private float timeToStartSpawning = 1f;
     [SerializeField] private GameController gamecontrol;
@@ -21,14 +22,14 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if(camera.DisplayMap == true)
         {
-            Debug.Log("mapa");
             SpawnMap();
             camera.DisplayMap = false;
         }
     }
 
     public void StartBasicCoroutine(){
-        spawnLifebuoyCoroutine = StartCoroutine(SpawnLifebuoyCoroutine());
+        objectPol.DesPawnAll();
+        //spawnLifebuoyCoroutine = StartCoroutine(SpawnLifebuoyCoroutine());
         spawnBasicCoroutine = StartCoroutine(SpawnCoroutine());
     }
 
@@ -85,7 +86,7 @@ public class ObstacleSpawner : MonoBehaviour
     public void StopSpawner()
     {
         StopCoroutine(spawnBasicCoroutine);
-        StopCoroutine(spawnLifebuoyCoroutine);
-        objectPol.DesPawnAll();
+        //StopCoroutine(spawnLifebuoyCoroutine);
+        timeToSpawn = realtimetoSpawn;
     }
 }
