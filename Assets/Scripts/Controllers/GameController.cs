@@ -66,6 +66,8 @@ public class GameController : MonoBehaviour
 
         if (dificulty != currentDificulty && dificulty < 4)
         {
+            if(dificulty == 3)
+                spawner.StarLifebuoyCoroutine();
             spawner.timeToSpawn = spawner.timeToSpawn / dificulty;      
             currentDificulty = dificulty;
         }

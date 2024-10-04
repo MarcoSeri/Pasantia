@@ -6,14 +6,13 @@ using UnityEngine.UIElements;
 public class ObstacleSpawner : MonoBehaviour
 {
     public ObjectPooler objectPol;
-    public float realtimetoSpawn = 5f;
     public float timeToSpawn = 5f;
+    private float realtimetoSpawn = 5f;
     [SerializeField] private float timeToStartSpawning = 1f;
     [SerializeField] private GameController gamecontrol;
     [SerializeField] private BarcoController boat;
     [SerializeField] private CameraMovement camera;
     [SerializeField] private string[] mapTags;
-    private bool mapWasDisplayed = false;
 
     Coroutine spawnBasicCoroutine;
     Coroutine spawnLifebuoyCoroutine;
@@ -29,10 +28,12 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void StartBasicCoroutine(){
         objectPol.DesPawnAll();
-        //spawnLifebuoyCoroutine = StartCoroutine(SpawnLifebuoyCoroutine());
         spawnBasicCoroutine = StartCoroutine(SpawnCoroutine());
     }
 
+    public void StarLifebuoyCoroutine(){
+        spawnLifebuoyCoroutine = StartCoroutine(SpawnLifebuoyCoroutine());
+    }
     IEnumerator SpawnCoroutine()
     {
         yield return new WaitForSeconds(timeToStartSpawning);
@@ -45,7 +46,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     IEnumerator SpawnLifebuoyCoroutine()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.2f);
         while (gamecontrol.OnGame == true) //game is running
         {
             SpawnSingleLifebuoy();
@@ -61,7 +62,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SpawnSingleRock()
     {
-        float x = Random.Range(boat.transform.position.x-9,boat.transform.position.x+9);
+        float x = Random.Range(boat.transform.position.x-10,boat.transform.position.x+10);
         x = Mathf.Clamp(x, -15, 15);
         SpawnSingleRock(new Vector3(x, transform.position.y, transform.position.z));
     }
@@ -73,7 +74,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SpawnSingleLifebuoy()
     {
-        float x = Random.Range(boat.transform.position.x - 7, boat.transform.position.x + 7);
+        float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
         x = Mathf.Clamp(x, -15, 15);
         objectPol.SpawnFromPool("Lifebuoy", new Vector3(x, transform.position.y+0.4f, transform.position.z), Quaternion.identity);
     }
@@ -86,7 +87,7 @@ public class ObstacleSpawner : MonoBehaviour
     public void StopSpawner()
     {
         StopCoroutine(spawnBasicCoroutine);
-        //StopCoroutine(spawnLifebuoyCoroutine);
+        StopCoroutine(spawnLifebuoyCoroutine);
         timeToSpawn = realtimetoSpawn;
     }
 }
