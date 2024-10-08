@@ -13,17 +13,19 @@ public class BarcoController : MonoBehaviour {
     [SerializeField] private GameController GameController;
     [SerializeField] private Animator animator;
     
+    public bool bajarLaVelocidad = false;
     public int distance;
     private float mov_input;
     private float rot_input;
     private float rotacion = 0;
+    private float modifier = 1;
+
 
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
+    
     void Update() {
         if (GameController.OnGame == true)
         {
@@ -33,7 +35,10 @@ public class BarcoController : MonoBehaviour {
         distance = Mathf.RoundToInt(transform.position.z);
     }
         void FixedUpdate() {
-            if (GameController.OnGame == true)
+            if(bajarLaVelocidad)
+                rb.velocity = Vector3.SmoothDamp(rb.velocity, Vector3.one, ref currentVelocity, 0.5f);
+
+        if (GameController.OnGame == true)
             {
                 movertanque(mov_input);
                 rotartanque(rot_input);
@@ -58,7 +63,7 @@ public class BarcoController : MonoBehaviour {
             if (input < 0)
                 rb.AddForce(transform.forward * input * Vel_Tanque * 0.6f);
             else
-                rb.AddForce(transform.forward * input * Vel_Tanque);
+                rb.AddForce(transform.forward * input * Vel_Tanque * modifier);
 
             animator.SetInteger("Movimiento", (int)input);
         }
@@ -78,4 +83,13 @@ public class BarcoController : MonoBehaviour {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
+
+    private Vector3 currentVelocity;
+
+    public void CambiarMultiplicadorVelocidad(float multiplicador)
+    {
+        modifier = multiplicador;
     }
+
+
+}

@@ -16,6 +16,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     Coroutine spawnBasicCoroutine;
     Coroutine spawnLifebuoyCoroutine;
+    Coroutine spawnCamaloteCoroutine;
 
     private void Update()
     {
@@ -29,6 +30,7 @@ public class ObstacleSpawner : MonoBehaviour
     public void StartBasicCoroutine(){
         objectPol.DesPawnAll();
         spawnBasicCoroutine = StartCoroutine(SpawnCoroutine());
+        spawnCamaloteCoroutine = StartCoroutine(SpawnCamaloteCoroutine());
     }
 
     public void StarLifebuoyCoroutine(){
@@ -51,6 +53,16 @@ public class ObstacleSpawner : MonoBehaviour
         {
             SpawnSingleLifebuoy();
             yield return new WaitForSeconds(10);
+        }
+    }
+
+    IEnumerator SpawnCamaloteCoroutine()
+    {
+        yield return new WaitForSeconds(0.8f);
+        while (gamecontrol.OnGame == true) //game is running
+        {
+            SpawnSingleCamalote();
+            yield return new WaitForSeconds(15);
         }
     }
 
@@ -79,6 +91,12 @@ public class ObstacleSpawner : MonoBehaviour
         objectPol.SpawnFromPool("Lifebuoy", new Vector3(x, transform.position.y+0.4f, transform.position.z), Quaternion.identity);
     }
 
+    public void SpawnSingleCamalote(){
+        float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
+        x = Mathf.Clamp(x, -15, 15);
+        objectPol.SpawnFromPool("Camalote", new Vector3(x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
+    }
+
     public void SpawnMap()
     {
         string tag = mapTags[Random.Range(0, mapTags.Length)];
@@ -87,7 +105,8 @@ public class ObstacleSpawner : MonoBehaviour
     public void StopSpawner()
     {
         StopCoroutine(spawnBasicCoroutine);
-        StopCoroutine(spawnLifebuoyCoroutine);
+        if(spawnLifebuoyCoroutine != null)
+            StopCoroutine(spawnLifebuoyCoroutine);
         timeToSpawn = realtimetoSpawn;
     }
 }
