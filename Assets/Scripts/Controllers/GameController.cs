@@ -10,12 +10,16 @@ public class GameController : MonoBehaviour
     [SerializeField] ObstacleSpawner spawner;
 
     [SerializeField] int[] pointToReach;
-    [SerializeField] float[] dificulties;
+    [SerializeField] int[] dificulties;
     public int Points => maxPointsReached;
     public bool OnGame = false;
     public int maxPointsReached = 0;
-    private float dificulty = 1;
-    private float currentDificulty = 1;
+    private int dificulty = 1;
+
+    public int Dificulty
+    {
+        get { return dificulty; }
+    }
 
     void Start()
     {
@@ -54,7 +58,7 @@ public class GameController : MonoBehaviour
     public void MoveCamera()
     {
         if (maxPointsReached < 100)
-            dificulty = 1f;
+            dificulty = 1;
  
         for (int i = 0; i < pointToReach.Length; i++)
         {
@@ -63,15 +67,6 @@ public class GameController : MonoBehaviour
                 dificulty = dificulties[i];
             }
         }
-
-        if (dificulty != currentDificulty && dificulty < 4)
-        {
-            if(dificulty == 3)
-                spawner.StarLifebuoyCoroutine();
-            spawner.timeToSpawn = spawner.timeToSpawn / dificulty;      
-            currentDificulty = dificulty;
-        }
-
         camara.MoveCamera(dificulty);
     }
 }

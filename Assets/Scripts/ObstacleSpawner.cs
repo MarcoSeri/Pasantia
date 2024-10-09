@@ -6,13 +6,14 @@ using UnityEngine.UIElements;
 public class ObstacleSpawner : MonoBehaviour
 {
     public ObjectPooler objectPol;
-    public float timeToSpawn = 5f;
     private float realtimetoSpawn = 5f;
     [SerializeField] private float timeToStartSpawning = 1f;
     [SerializeField] private GameController gamecontrol;
     [SerializeField] private BarcoController boat;
-    [SerializeField] private CameraMovement camera;
+    [SerializeField] private new CameraMovement camera;
     [SerializeField] private string[] mapTags;
+    [SerializeField] private float[] timeToSpawn;
+    public int TimeToSpawnRockIndex;
 
     Coroutine spawnBasicCoroutine;
     Coroutine spawnLifebuoyCoroutine;
@@ -20,6 +21,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update()
     {
+        TimeToSpawnRockIndex = gamecontrol.Dificulty-1;
         if(camera.DisplayMap == true)
         {
             SpawnMap();
@@ -42,7 +44,7 @@ public class ObstacleSpawner : MonoBehaviour
         while (gamecontrol.OnGame == true) //game is running
         {
             SpawnSingleRock();
-            yield return new WaitForSeconds(timeToSpawn);            
+            yield return new WaitForSeconds(timeToSpawn[TimeToSpawnRockIndex]);            
         }
     }
 
@@ -107,6 +109,5 @@ public class ObstacleSpawner : MonoBehaviour
         StopCoroutine(spawnBasicCoroutine);
         if(spawnLifebuoyCoroutine != null)
             StopCoroutine(spawnLifebuoyCoroutine);
-        timeToSpawn = realtimetoSpawn;
     }
 }
