@@ -59,6 +59,7 @@ public class ObjectPooler : MonoBehaviour
         if(pooledObj != null){
             pooledObj.OnObjectSpawn();
         }
+        objectToSpawn.transform.rotation = rotation;
         objectToSpawn.transform.position = position;
         //Debug.Log("x"+objectToSpawn.transform.rotation.x+"y"+objectToSpawn.transform.rotation.y+"z"+objectToSpawn.transform.rotation.z);
 

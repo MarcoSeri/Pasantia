@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class ObstacleSpawner : MonoBehaviour
 {
     public ObjectPooler objectPol;
-    private float realtimetoSpawn = 5f;
     [SerializeField] private float timeToStartSpawning = 1f;
     [SerializeField] private GameController gamecontrol;
     [SerializeField] private BarcoController boat;
@@ -78,12 +77,14 @@ public class ObstacleSpawner : MonoBehaviour
     {
         float x = Random.Range(boat.transform.position.x-10,boat.transform.position.x+10);
         x = Mathf.Clamp(x, -15, 15);
-        SpawnSingleRock(new Vector3(x, transform.position.y, transform.position.z));
-    }
+        Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+        SpawnSingleRock(new Vector3(x, transform.position.y, transform.position.z),randomRotation);
+    }   
 
-    public void SpawnSingleRock(Vector3 position)
+    public void SpawnSingleRock(Vector3 position,Quaternion randomRotation)
     {
-        objectPol.SpawnFromPool("Basic", position, Quaternion.identity);
+        
+        objectPol.SpawnFromPool("Basic", position, randomRotation);
     }
 
     public void SpawnSingleLifebuoy()

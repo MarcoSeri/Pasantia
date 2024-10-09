@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 3
+  VelTransicion: 2
   DisplayMap: 0
 --- !u!65 &963194230
 BoxCollider:
@@ -902,7 +903,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPol: {fileID: 1811069390}
-  timeToSpawn: 5
   timeToStartSpawning: 1
   gamecontrol: {fileID: 2131050010}
   boat: {fileID: 1536528336}
@@ -910,6 +910,12 @@ MonoBehaviour:
   mapTags:
   - Mapa1
   - Mapa2
+  timeToSpawn:
+  - 5
+  - 2.5
+  - 0.8
+  - 0.8
+  TimeToSpawnRockIndex: 0
 --- !u!4 &2080660354
 Transform:
   m_ObjectHideFlags: 0
@@ -970,11 +976,7 @@ MonoBehaviour:
   camara: {fileID: 963194229}
   spawner: {fileID: 2080660353}
   pointToReach: 00000000f4010000d007000088130000
-  dificulties:
-  - 1
-  - 2
-  - 3
-  - 4
+  dificulties: 01000000020000000300000004000000
   OnGame: 0
   maxPointsReached: 0
 --- !u!4 &2131050011
