@@ -754,9 +754,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Basic
+  - tag: Tronco
     prefab: {fileID: 7706424776572715413, guid: 10f2ff2d93e511b469bd3e7f5db64270, type: 3}
-    size: 10
+    size: 5
+  - tag: Tronco 1
+    prefab: {fileID: 7706424776572715413, guid: 6659cad0856eeb94cb5a447a6cdc7ebb, type: 3}
+    size: 5
   - tag: Mapa1
     prefab: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
     size: 3
@@ -910,6 +913,9 @@ MonoBehaviour:
   mapTags:
   - Mapa1
   - Mapa2
+  troncoTags:
+  - Tronco
+  - Tronco 1
   timeToSpawn:
   - 5
   - 2.5

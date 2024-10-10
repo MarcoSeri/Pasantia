@@ -54,14 +54,14 @@ public class ObjectPooler : MonoBehaviour
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
         objectToSpawn.SetActive(true);
 
-        IPooledObjects pooledObj = objectToSpawn.GetComponent<IPooledObjects>();
-
+        objectToSpawn.transform.rotation = rotation;
+        objectToSpawn.transform.position = position;
+        
+        IPooledObjects pooledObj = objectToSpawn.GetComponentInChildren<IPooledObjects>();
+        
         if(pooledObj != null){
             pooledObj.OnObjectSpawn();
         }
-        objectToSpawn.transform.rotation = rotation;
-        objectToSpawn.transform.position = position;
-        //Debug.Log("x"+objectToSpawn.transform.rotation.x+"y"+objectToSpawn.transform.rotation.y+"z"+objectToSpawn.transform.rotation.z);
 
         poolDictionary[tag].Enqueue(objectToSpawn);
 

@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public bool OnGame = false;
     public int maxPointsReached = 0;
     private int dificulty = 1;
+    private int currentDificulty = 1;
 
     public int Dificulty
     {
@@ -59,7 +60,15 @@ public class GameController : MonoBehaviour
     {
         if (maxPointsReached < 100)
             dificulty = 1;
- 
+
+        if (dificulty != currentDificulty)
+        {
+            if (dificulty == 3)
+                spawner.StarLifebuoyCoroutine();
+
+            currentDificulty = dificulty;
+        }
+
         for (int i = 0; i < pointToReach.Length; i++)
         {
             if (maxPointsReached > pointToReach[i])

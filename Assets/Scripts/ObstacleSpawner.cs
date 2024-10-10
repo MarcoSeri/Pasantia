@@ -11,7 +11,9 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private BarcoController boat;
     [SerializeField] private new CameraMovement camera;
     [SerializeField] private string[] mapTags;
+    [SerializeField] private string[] troncoTags;
     [SerializeField] private float[] timeToSpawn;
+
     public int TimeToSpawnRockIndex;
 
     Coroutine spawnBasicCoroutine;
@@ -43,13 +45,14 @@ public class ObstacleSpawner : MonoBehaviour
         while (gamecontrol.OnGame == true) //game is running
         {
             SpawnSingleRock();
-            yield return new WaitForSeconds(timeToSpawn[TimeToSpawnRockIndex]);            
+            float randomTimer = Random.Range(0.5f,1.1f);
+            yield return new WaitForSeconds(timeToSpawn[TimeToSpawnRockIndex] * randomTimer);            
         }
     }
 
     IEnumerator SpawnLifebuoyCoroutine()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(2f);
         while (gamecontrol.OnGame == true) //game is running
         {
             SpawnSingleLifebuoy();
@@ -83,8 +86,8 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SpawnSingleRock(Vector3 position,Quaternion randomRotation)
     {
-        
-        objectPol.SpawnFromPool("Basic", position, randomRotation);
+        string tag = troncoTags[Random.Range(0, troncoTags.Length)];
+        objectPol.SpawnFromPool(tag, position, randomRotation);
     }
 
     public void SpawnSingleLifebuoy()
@@ -97,7 +100,7 @@ public class ObstacleSpawner : MonoBehaviour
     public void SpawnSingleCamalote(){
         float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
         x = Mathf.Clamp(x, -15, 15);
-        objectPol.SpawnFromPool("Camalote", new Vector3(x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
+        objectPol.SpawnFromPool("Camalote", new Vector3(x, transform.position.y + 0.4f, transform.position.z+5), Quaternion.identity);
     }
 
     public void SpawnMap()
