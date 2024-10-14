@@ -760,6 +760,9 @@ MonoBehaviour:
   - tag: Tronco 1
     prefab: {fileID: 7706424776572715413, guid: 6659cad0856eeb94cb5a447a6cdc7ebb, type: 3}
     size: 5
+  - tag: Tronco 2
+    prefab: {fileID: 7706424776572715413, guid: 4c7b56175a2dadc4d95f2aa17ee442ee, type: 3}
+    size: 5
   - tag: Mapa1
     prefab: {fileID: 3279543999748263151, guid: cf9d2b6c898dd8a4fb1bafd2de56e1cb, type: 3}
     size: 3
@@ -914,8 +917,12 @@ MonoBehaviour:
   - Mapa1
   - Mapa2
   troncoTags:
-  - Tronco
-  - Tronco 1
+  - tag: Tronco
+    probability: 35
+  - tag: Tronco 2
+    probability: 35
+  - tag: Tronco 1
+    probability: 30
   timeToSpawn:
   - 5
   - 2.5

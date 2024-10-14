@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
+[System.Serializable]
+public class TagProbability
+{
+    public string tag;
+    public float probability;
+}
+
 public class ObstacleSpawner : MonoBehaviour
 {
     public ObjectPooler objectPol;
@@ -11,7 +18,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private BarcoController boat;
     [SerializeField] private new CameraMovement camera;
     [SerializeField] private string[] mapTags;
-    [SerializeField] private string[] troncoTags;
+    [SerializeField] private TagProbability[] troncoTags;
     [SerializeField] private float[] timeToSpawn;
 
     public int TimeToSpawnRockIndex;
@@ -22,21 +29,21 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update()
     {
-        TimeToSpawnRockIndex = gamecontrol.Dificulty-1;
-        if(camera.DisplayMap == true)
+        TimeToSpawnRockIndex = gamecontrol.Dificulty - 1;
+        if (camera.DisplayMap == true)
         {
             SpawnMap();
             camera.DisplayMap = false;
         }
     }
 
-    public void StartBasicCoroutine(){
+    public void StartBasicCoroutine() {
         objectPol.DesPawnAll();
         spawnBasicCoroutine = StartCoroutine(SpawnCoroutine());
         spawnCamaloteCoroutine = StartCoroutine(SpawnCamaloteCoroutine());
     }
 
-    public void StarLifebuoyCoroutine(){
+    public void StarLifebuoyCoroutine() {
         spawnLifebuoyCoroutine = StartCoroutine(SpawnLifebuoyCoroutine());
     }
     IEnumerator SpawnCoroutine()
@@ -45,8 +52,8 @@ public class ObstacleSpawner : MonoBehaviour
         while (gamecontrol.OnGame == true) //game is running
         {
             SpawnSingleRock();
-            float randomTimer = Random.Range(0.5f,1.1f);
-            yield return new WaitForSeconds(timeToSpawn[TimeToSpawnRockIndex] * randomTimer);            
+            float randomTimer = Random.Range(0.5f, 1.1f);
+            yield return new WaitForSeconds(timeToSpawn[TimeToSpawnRockIndex] * randomTimer);
         }
     }
 
@@ -73,45 +80,61 @@ public class ObstacleSpawner : MonoBehaviour
     public void spawnObstacle()
     {
         //string tag = basicTags[Random.Range(0, basicTags.Length)];
-        objectPol.SpawnFromPool("Basic",transform.position, Quaternion.identity);
+        objectPol.SpawnFromPool("Basic", transform.position, Quaternion.identity);
     }
 
     public void SpawnSingleRock()
     {
-        float x = Random.Range(boat.transform.position.x-10,boat.transform.position.x+10);
+        float x = Random.Range(boat.transform.position.x - 10, boat.transform.position.x + 10);
         x = Mathf.Clamp(x, -15, 15);
         Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
-        SpawnSingleRock(new Vector3(x, transform.position.y, transform.position.z),randomRotation);
-    }   
+        SpawnSingleRock(new Vector3(x, transform.position.y, transform.position.z), randomRotation);
+    }
 
-    public void SpawnSingleRock(Vector3 position,Quaternion randomRotation)
+    public void SpawnSingleRock(Vector3 position, Quaternion randomRotation)
     {
-        string tag = troncoTags[Random.Range(0, troncoTags.Length)];
-        objectPol.SpawnFromPool(tag, position, randomRotation);
+        objectPol.SpawnFromPool(selectTag(troncoTags), position, randomRotation);
     }
 
     public void SpawnSingleLifebuoy()
     {
         float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
         x = Mathf.Clamp(x, -15, 15);
-        objectPol.SpawnFromPool("Lifebuoy", new Vector3(x, transform.position.y+0.4f, transform.position.z), Quaternion.identity);
+        objectPol.SpawnFromPool("Lifebuoy", new Vector3(x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
     }
 
-    public void SpawnSingleCamalote(){
+    public void SpawnSingleCamalote() {
         float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
         x = Mathf.Clamp(x, -15, 15);
-        objectPol.SpawnFromPool("Camalote", new Vector3(x, transform.position.y + 0.4f, transform.position.z+5), Quaternion.identity);
+        objectPol.SpawnFromPool("Camalote", new Vector3(x, transform.position.y + 0.4f, transform.position.z + 5), Quaternion.identity);
     }
 
     public void SpawnMap()
     {
         string tag = mapTags[Random.Range(0, mapTags.Length)];
-        objectPol.SpawnFromPool(tag, new Vector3(0,0,camera.transform.position.z+50.4f), Quaternion.identity);
+        objectPol.SpawnFromPool(tag, new Vector3(0, 0, camera.transform.position.z + 50.4f), Quaternion.identity);
     }
     public void StopSpawner()
     {
         StopCoroutine(spawnBasicCoroutine);
-        if(spawnLifebuoyCoroutine != null)
+        if (spawnLifebuoyCoroutine != null)
             StopCoroutine(spawnLifebuoyCoroutine);
     }
+
+    private string selectTag(TagProbability[] tags)
+    {
+        int posibility = Random.Range(0, 100);
+        float cumulativeProbability = 0f;
+
+        foreach (TagProbability tag in tags)
+        {
+            cumulativeProbability += tag.probability;
+
+            if (posibility <= cumulativeProbability)
+                return tag.tag;
+        }
+
+        return tags[0].tag;
+    }
+
 }
