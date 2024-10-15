@@ -14,16 +14,24 @@ public class BarcoController : MonoBehaviour {
     [SerializeField] private Animator animator;
 
     public Action BoatCrashed;
+    public Action<bool> SideCollision;
     public bool bajarLaVelocidad = false;
     public int distance;
+
     private float mov_input;
     private float rot_input;
     private float rotacion = 0;
     private float modifier = 1;
 
 
-    // Start is called before the first frame update
+
+    private void onSideCollision(bool side)
+    {
+
+    }
+
     void Start() {
+        SideCollision += onSideCollision;
         rb = GetComponent<Rigidbody>();
     }
     
