@@ -7,10 +7,10 @@ public class ColliderController : MonoBehaviour
 {
     private Collider borde;
     [SerializeField] private BarcoController boat;
-    public Action BoatCrashed;
 
     void Start()
     {
+        boat = GameObject.FindGameObjectWithTag("Player").GetComponent<BarcoController>();
         borde = GetComponent<Collider>();
     
     }
@@ -23,7 +23,7 @@ public class ColliderController : MonoBehaviour
     public void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player"))
         {
-            BoatCrashed.Invoke();
+            boat.BoatCrashed.Invoke();
         }
     }
 }

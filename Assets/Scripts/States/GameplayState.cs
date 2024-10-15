@@ -10,18 +10,18 @@ public class GameplayState : GameBaseState
     [SerializeField] private BarcoController barcocontroler;
     [SerializeField] private ColliderController borde;
     [SerializeField] private ObstacleSpawner spawner;
-   
-     private void Awake() {
+    public Action EndGames;
+
+    private void Awake() {
         base.Awake();
         borde.gameObject.SetActive(false);
     }
     public override void EnterState()
     {
-       // StartCoroutine(WaitToStart());
         gamecontroler.OnGame = true;
         borde.gameObject.SetActive(true);
         spawner.StartBasicCoroutine();
-        borde.BoatCrashed += EndGame;       
+        barcocontroler.BoatCrashed += EndGame;
         gamecontroler.SetUp();
     }
 
@@ -33,7 +33,7 @@ public class GameplayState : GameBaseState
     public override void ExitState()
     {
         gamecontroler.OnGame = false;
-        borde.BoatCrashed -= EndGame;
+        barcocontroler.BoatCrashed -= EndGame;
         borde.gameObject.SetActive(false);
         barcocontroler.DeleteForce();
         spawner.StopSpawner();

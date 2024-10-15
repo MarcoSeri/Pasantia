@@ -12,7 +12,8 @@ public class BarcoController : MonoBehaviour {
     [SerializeField] private float Vel_Rotacion = 120f;
     [SerializeField] private GameController GameController;
     [SerializeField] private Animator animator;
-    
+
+    public Action BoatCrashed;
     public bool bajarLaVelocidad = false;
     public int distance;
     private float mov_input;
