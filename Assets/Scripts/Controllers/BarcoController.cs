@@ -23,15 +23,37 @@ public class BarcoController : MonoBehaviour {
     private float rotacion = 0;
     private float modifier = 1;
 
+    Coroutine startRotation;
 
-
-    private void onSideCollision(bool side)
+    private void HandleSideCollision(bool side)
     {
+        if (side)
+        {
+            StartRotationCoroutine(-1, 0.5f);
+
+        }
+        else
+        {
+            StartRotationCoroutine(-0.5f, 1);
+        }
 
     }
 
+    public void StartRotationCoroutine(float min, float max)
+    {
+        startRotation = StartCoroutine(onSideCollision(min,max));
+    }
+
+    IEnumerator onSideCollision(float min, float max)
+    {
+        Math.Clamp(rot_input, min, max);
+        yield return new WaitForSeconds(5);
+
+            Debug.Log("Ya termino");
+    }
+
     void Start() {
-        SideCollision += onSideCollision;
+        SideCollision += HandleSideCollision;
         rb = GetComponent<Rigidbody>();
     }
     

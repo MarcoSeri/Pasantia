@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852929237034700885}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -51,8 +51,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.78065664, y: 1, z: 1.6451111}
-  m_Center: {x: -0.43897334, y: 0, z: 0.000869751}
+  m_Size: {x: 0.78065664, y: 0.864483, z: 1.6451111}
+  m_Center: {x: -0.43897334, y: 0.0677585, z: 0.000869751}
 --- !u!1 &7879991650570506563
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,6 +63,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2917499736189499210}
   - component: {fileID: 2228315098478725188}
+  - component: {fileID: 6554327968230892241}
   m_Layer: 0
   m_Name: Derecha
   m_TagString: Untagged
@@ -78,7 +79,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7879991650570506563}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -104,8 +105,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7630304, y: 1, z: 1.6451111}
-  m_Center: {x: 0.33085603, y: 0, z: 0.000869751}
+  m_Size: {x: 0.7630304, y: 0.8894742, z: 1.6451111}
+  m_Center: {x: 0.33085603, y: 0.055262893, z: 0.000869751}
+--- !u!114 &6554327968230892241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7879991650570506563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac74c977415f65b4d914ebc47d92e866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barco: {fileID: 2852044019863120274}
 --- !u!1 &9015840482845620308
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +132,7 @@ GameObject:
   - component: {fileID: 2852044019863120274}
   - component: {fileID: 7287694531694252705}
   - component: {fileID: 1537483899637968180}
+  - component: {fileID: 8089704106014563881}
   m_Layer: 0
   m_Name: Barco
   m_TagString: Player
@@ -195,7 +210,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9015840482845620308}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7851838c53c887d42961da19a55cac4c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -209,6 +224,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.27, y: 1, z: 1.64}
   m_Center: {x: -0.06, y: 0, z: 0}
+--- !u!114 &8089704106014563881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9015840482845620308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff30163d31685f44aeecfb5cb604450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barco: {fileID: 2852044019863120274}
 --- !u!1001 &1349588353891294232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260,6 +288,14 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1519bc7bfdc50f046af25e13312d6632, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 1519bc7bfdc50f046af25e13312d6632, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000003090862
+      objectReference: {fileID: 0}
+    - target: {fileID: -5477749408508380018, guid: 1519bc7bfdc50f046af25e13312d6632, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00000003090862
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1519bc7bfdc50f046af25e13312d6632, type: 3}
       propertyPath: m_Name
