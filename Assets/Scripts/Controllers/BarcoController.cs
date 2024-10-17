@@ -8,10 +8,12 @@ using TMPro;
 public class BarcoController : MonoBehaviour {
     private Rigidbody rb;
 
+    [SerializeField] private float MinMax;
     [SerializeField] private float Vel_Tanque = 15f;
     [SerializeField] private float Vel_Rotacion = 120f;
     [SerializeField] private GameController GameController;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject[] remos;
 
     public Action BoatCrashed;
     public Action<bool> SideCollision;
@@ -23,33 +25,37 @@ public class BarcoController : MonoBehaviour {
     private float rotacion = 0;
     private float modifier = 1;
 
+    Lado modRotInput = Lado.No;
+    public enum Lado
+    {
+        Derecha,
+        Izquierda,
+        No
+    }
+
     Coroutine startRotation;
 
     private void HandleSideCollision(bool side)
     {
         if (side)
         {
-            StartRotationCoroutine(-1, 0.5f);
-
+            startRotation = StartCoroutine(onSideCollision(Lado.Izquierda,remos[0]));
         }
         else
         {
-            StartRotationCoroutine(-0.5f, 1);
+           startRotation = StartCoroutine(onSideCollision(Lado.Derecha,remos[1]));
+
         }
-
     }
 
-    public void StartRotationCoroutine(float min, float max)
+    IEnumerator onSideCollision(Lado side,GameObject remo)
     {
-        startRotation = StartCoroutine(onSideCollision(min,max));
-    }
-
-    IEnumerator onSideCollision(float min, float max)
-    {
-        Math.Clamp(rot_input, min, max);
+        remo.SetActive(false);
+        modRotInput = side;
         yield return new WaitForSeconds(5);
-
-            Debug.Log("Ya termino");
+        modRotInput = Lado.No;
+        remo.SetActive(true);
+        Debug.Log("Ya termino");
     }
 
     void Start() {
@@ -62,6 +68,9 @@ public class BarcoController : MonoBehaviour {
         {
             mov_input = Input.GetAxisRaw("Vertical");
             rot_input = Input.GetAxisRaw("Horizontal");
+
+            if (modRotInput != Lado.No)
+                rot_input = modifyRotInput(modRotInput, rot_input, MinMax);
         }
         distance = Mathf.RoundToInt(transform.position.z);
     }
@@ -122,5 +131,11 @@ public class BarcoController : MonoBehaviour {
         modifier = multiplicador;
     }
 
-
+    private float modifyRotInput (Lado side,float rot_input,float MinMax)
+    {
+        if (side == Lado.Derecha)
+            return Mathf.Clamp(rot_input, -1, MinMax);
+        else
+            return Mathf.Clamp(rot_input, -MinMax, 1);
+    }
 }

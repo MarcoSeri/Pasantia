@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BollaObstacle : MonoBehaviour
+public class BollaObstacle : MonoBehaviour, IPooledObjects
 {
 
 
@@ -23,5 +23,10 @@ public class BollaObstacle : MonoBehaviour
         {
             this.tag = "Untagged";
         }
+    }
+
+    public void OnObjectSpawn()
+    {
+        this.tag = "Bolla";
     }
 }
