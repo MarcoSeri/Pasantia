@@ -468,7 +468,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 3
   VelTransicion: 2
+  VelocidadesPorDificultad:
+  - 1.5
+  - 2.5
+  - 3
+  - 3.5
+  - 4
   DisplayMap: 0
+  currentDificult: 1
 --- !u!65 &963194230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1023,7 +1030,7 @@ MonoBehaviour:
   ui: {fileID: 172262282}
   camara: {fileID: 963194229}
   spawner: {fileID: 2080660353}
-  pointToReach: 00000000f4010000d007000088130000
+  pointToReach: 00000000ee020000c40900009411000070170000
   dificulties: 01000000020000000300000004000000
   OnGame: 0
   maxPointsReached: 0
