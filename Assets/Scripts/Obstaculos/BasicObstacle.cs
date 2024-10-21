@@ -18,7 +18,7 @@ public class BasicObstacle : MonoBehaviour, IPooledObjects
     {
         float newY = startPosition.y + Mathf.Sin(Time.time * frequency) * amplitude;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-        transform.Rotate(Vector3.up, 0.1f * Time.deltaTime * izqOrDer);
+        transform.RotateAround(Vector3.up, 0.1f * Time.deltaTime * izqOrDer);
     }
 
     public void OnObjectSpawn()

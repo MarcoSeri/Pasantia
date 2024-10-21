@@ -106,7 +106,7 @@ public class ObstacleSpawner : MonoBehaviour
     public void SpawnSingleCamalote() {
         float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
         x = Mathf.Clamp(x, -15, 15);
-        objectPol.SpawnFromPool("Boya", new Vector3(x, transform.position.y + 0.4f, transform.position.z + 15), Quaternion.identity);
+        objectPol.SpawnFromPool("Boya", new Vector3(x, transform.position.y + 1.2f, transform.position.z + 15), Quaternion.identity);
         objectPol.SpawnFromPool("Buque", new Vector3(-x, transform.position.y + 0.4f, transform.position.z + 50), Quaternion.identity);
         objectPol.SpawnFromPool("Camalote", new Vector3(x, transform.position.y + 0.4f, transform.position.z + 5), Quaternion.identity);
     }
