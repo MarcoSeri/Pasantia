@@ -114,7 +114,7 @@ public class ObstacleSpawner : MonoBehaviour
     public void SpawnMap()
     {
         string tag = mapTags[Random.Range(0, mapTags.Length)];
-        objectPol.SpawnFromPool(tag, new Vector3(0, 0, camera.transform.position.z + 50.4f), Quaternion.identity);
+        objectPol.SpawnFromPool(tag, new Vector3(20, 0, camera.transform.position.z + 32.4f), Quaternion.identity);
     }
     public void StopSpawner()
     {
