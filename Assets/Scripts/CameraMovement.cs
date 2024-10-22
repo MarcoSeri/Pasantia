@@ -6,6 +6,8 @@ public class CameraMovement : MonoBehaviour{
     [SerializeField]private float VelTransicion = 2f;
     [SerializeField]private float[] VelocidadesPorDificultad;
 
+    float que;
+
     public bool DisplayMap = false;
     public float currentDificult = 1;
 
@@ -15,7 +17,8 @@ public class CameraMovement : MonoBehaviour{
     void FixedUpdate(){
     }
 
-    public void MoveCamera(int dificulty){ 
+    public void MoveCamera(int dificulty){
+            que = VelocidadesPorDificultad[dificulty - 1];
             currentDificult = Mathf.Lerp(currentDificult, VelocidadesPorDificultad[dificulty-1], VelTransicion * Time.deltaTime);
             transform.Translate(new Vector3(0, 0, velocidad * currentDificult * Time.deltaTime), Space.World); 
     }

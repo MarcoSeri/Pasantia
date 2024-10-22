@@ -26,6 +26,7 @@ public class ObstacleSpawner : MonoBehaviour
     Coroutine spawnBasicCoroutine;
     Coroutine spawnLifebuoyCoroutine;
     Coroutine spawnCamaloteCoroutine;
+    Coroutine spawnBuoyCoroutine;
 
     private void Update()
     {
@@ -37,15 +38,41 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
+
+
+    #region Boya
+    public void StartBuoyCoroutine()
+    {
+        spawnBuoyCoroutine = StartCoroutine(SpawnBuoyCoroutine());
+    }
+
+    IEnumerator SpawnBuoyCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        while (gamecontrol.OnGame == true) //game is running
+        {
+            SpawnSingleBuoy();
+            yield return new WaitForSeconds(10);
+            float randomTimer = Random.Range(0.8f, 1.5f);
+            yield return new WaitForSeconds(10 * randomTimer);
+        }
+    }
+
+    private void SpawnSingleBuoy()
+    {
+        float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
+        x = Mathf.Clamp(x, -15, 15);
+        objectPol.SpawnFromPool("Boya", new Vector3(x, transform.position.y + 1.3f, transform.position.z), Quaternion.identity);
+    }
+    #endregion
+
+    #region Basico
     public void StartBasicCoroutine() {
         objectPol.DesPawnAll();
         spawnBasicCoroutine = StartCoroutine(SpawnCoroutine());
         spawnCamaloteCoroutine = StartCoroutine(SpawnCamaloteCoroutine());
     }
 
-    public void StarLifebuoyCoroutine() {
-        spawnLifebuoyCoroutine = StartCoroutine(SpawnLifebuoyCoroutine());
-    }
     IEnumerator SpawnCoroutine()
     {
         yield return new WaitForSeconds(timeToStartSpawning);
@@ -56,26 +83,33 @@ public class ObstacleSpawner : MonoBehaviour
             yield return new WaitForSeconds(timeToSpawn[TimeToSpawnRockIndex] * randomTimer);
         }
     }
+    IEnumerator SpawnCamaloteCoroutine()
+    {
+        yield return new WaitForSeconds(5f);
+        while (gamecontrol.OnGame == true) //game is running
+        {
+            SpawnSingleCamalote();
+            float randomTimer = Random.Range(1f, 2.5f);
+            yield return new WaitForSeconds(5 * randomTimer);
+        }
+    }
+    #endregion
 
+    #region SalvaVidas
+    public void StarLifebuoyCoroutine() {
+        spawnLifebuoyCoroutine = StartCoroutine(SpawnLifebuoyCoroutine());
+    }
     IEnumerator SpawnLifebuoyCoroutine()
     {
         yield return new WaitForSeconds(2f);
         while (gamecontrol.OnGame == true) //game is running
         {
             SpawnSingleLifebuoy();
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(8);
         }
     }
+    #endregion
 
-    IEnumerator SpawnCamaloteCoroutine()
-    {
-        yield return new WaitForSeconds(0.8f);
-        while (gamecontrol.OnGame == true) //game is running
-        {
-            SpawnSingleCamalote();
-            yield return new WaitForSeconds(15);
-        }
-    }
 
     public void spawnObstacle()
     {
@@ -106,8 +140,6 @@ public class ObstacleSpawner : MonoBehaviour
     public void SpawnSingleCamalote() {
         float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
         x = Mathf.Clamp(x, -15, 15);
-        objectPol.SpawnFromPool("Boya", new Vector3(x, transform.position.y + 1.2f, transform.position.z + 15), Quaternion.identity);
-        objectPol.SpawnFromPool("Buque", new Vector3(-x, transform.position.y + 1.4f, transform.position.z + 50), Quaternion.identity);
         objectPol.SpawnFromPool("Camalote", new Vector3(x, transform.position.y + 0.4f, transform.position.z + 5), Quaternion.identity);
     }
 
@@ -119,8 +151,14 @@ public class ObstacleSpawner : MonoBehaviour
     public void StopSpawner()
     {
         StopCoroutine(spawnBasicCoroutine);
+        StopCoroutine(spawnCamaloteCoroutine);
+
         if (spawnLifebuoyCoroutine != null)
             StopCoroutine(spawnLifebuoyCoroutine);
+
+        if (spawnBuoyCoroutine != null)
+            StopCoroutine(spawnBuoyCoroutine);
+        
     }
 
     private string selectTag(TagProbability[] tags)

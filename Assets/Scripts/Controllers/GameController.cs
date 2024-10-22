@@ -63,15 +63,18 @@ public class GameController : MonoBehaviour
 
         if (dificulty != currentDificulty)
         {
-            if (dificulty == 3)
+            if (dificulty == 2)
                 spawner.StarLifebuoyCoroutine();
+
+            if (dificulty == 3)
+                spawner.StartBuoyCoroutine();
 
             currentDificulty = dificulty;
         }
 
         for (int i = 0; i < pointToReach.Length; i++)
         {
-            if (maxPointsReached > pointToReach[i] && maxPointsReached < pointToReach[i+1])
+            if (maxPointsReached >= pointToReach[pointToReach.Length - 1] || maxPointsReached > pointToReach[i] && maxPointsReached < pointToReach[i+1])
             {
                 dificulty = dificulties[i];
                 Debug.Log(dificulty);
