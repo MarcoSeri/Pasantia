@@ -27,6 +27,7 @@ public class ObstacleSpawner : MonoBehaviour
     Coroutine spawnLifebuoyCoroutine;
     Coroutine spawnCamaloteCoroutine;
     Coroutine spawnBuoyCoroutine;
+    Coroutine spawnBuqueCoroutine;
 
     private void Update()
     {
@@ -37,6 +38,31 @@ public class ObstacleSpawner : MonoBehaviour
             camera.DisplayMap = false;
         }
     }
+
+    #region Buque
+    public void StartBuqueCoroutine()
+    {
+        spawnBuqueCoroutine = StartCoroutine(SpawnBuqueCoroutine());
+    }
+
+    IEnumerator SpawnBuqueCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+        while (gamecontrol.OnGame == true) //game is running
+        {
+            SpawnSingleBuque();
+            float randomTimer = Random.Range(10, 15);
+            yield return new WaitForSeconds(randomTimer);
+        }
+    }
+
+    private void SpawnSingleBuque()
+    {
+        float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
+        x = Mathf.Clamp(x, -15, 15);
+        objectPol.SpawnFromPool("Buque", new Vector3(x, transform.position.y + 1.4f, transform.position.z), Quaternion.identity);
+    }
+    #endregion
 
 
 
