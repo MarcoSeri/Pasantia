@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6300710904131774219}
   m_Layer: 0
   m_Name: Camalote
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4.0622554
+  m_Radius: 4.062255
   m_Height: 9.308384
   m_Direction: 1
   m_Center: {x: -0.08900881, y: 0.4313059, z: 0}

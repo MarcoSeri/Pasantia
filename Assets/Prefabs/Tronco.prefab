@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6972606905724485979}
   m_Layer: 0
   m_Name: Tronco
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,15 +98,15 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c110e9f1b1bbdf44cad85ecb18122b95, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8192291686484707044}
+      addedObject: {fileID: 1385705681230489075}
   m_SourcePrefab: {fileID: 100100000, guid: c110e9f1b1bbdf44cad85ecb18122b95, type: 3}
 --- !u!1 &7406201202235995407 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c110e9f1b1bbdf44cad85ecb18122b95, type: 3}
   m_PrefabInstance: {fileID: 7640766959060371550}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &8192291686484707044
-MeshCollider:
+--- !u!65 &1385705681230489075
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,10 +123,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7387706064836869012, guid: c110e9f1b1bbdf44cad85ecb18122b95, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.04938223, y: 0.014419731, z: 0.05571449}
+  m_Center: {x: -0.0026918044, y: 0.00022416294, z: -4.1730665e-19}
 --- !u!4 &7891375738071855029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c110e9f1b1bbdf44cad85ecb18122b95, type: 3}

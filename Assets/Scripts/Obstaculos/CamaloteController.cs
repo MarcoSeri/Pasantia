@@ -10,7 +10,7 @@ public class CamaloteController : MonoBehaviour
         {
             BarcoController boat = other.gameObject.GetComponent<BarcoController>();
             boat.bajarLaVelocidad = true;
-            boat.CambiarMultiplicadorVelocidad(0.9f);
+            boat.CambiarMultiplicadorVelocidad(0.99f);
         }
     }
 

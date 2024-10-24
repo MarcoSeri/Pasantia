@@ -20,8 +20,8 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private string[] mapTags;
     [SerializeField] private TagProbability[] troncoTags;
     [SerializeField] private float[] timeToSpawn;
-
-    public int TimeToSpawnRockIndex;
+    
+    private int TimeToSpawnRockIndex;
 
     Coroutine spawnBasicCoroutine;
     Coroutine spawnLifebuoyCoroutine;
@@ -51,10 +51,10 @@ public class ObstacleSpawner : MonoBehaviour
         yield return new WaitForSeconds(2f);
         while (gamecontrol.OnGame == true) //game is running
         {
+            Debug.Log("Spawnea dale");
             SpawnSingleBuoy();
-            yield return new WaitForSeconds(10);
-            float randomTimer = Random.Range(0.8f, 1.5f);
-            yield return new WaitForSeconds(10 * randomTimer);
+            float randomTimer = Random.Range(8, 15);
+            yield return new WaitForSeconds(randomTimer);
         }
     }
 
@@ -119,11 +119,12 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void SpawnSingleRock()
     {
-        float x = Random.Range(boat.transform.position.x - 10, boat.transform.position.x + 10);
+        float x = Random.Range(boat.transform.position.x - 13, boat.transform.position.x + 13);
         x = Mathf.Clamp(x, -15, 15);
         Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
         SpawnSingleRock(new Vector3(x, transform.position.y, transform.position.z), randomRotation);
     }
+
 
     public void SpawnSingleRock(Vector3 position, Quaternion randomRotation)
     {
@@ -158,7 +159,6 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (spawnBuoyCoroutine != null)
             StopCoroutine(spawnBuoyCoroutine);
-        
     }
 
     private string selectTag(TagProbability[] tags)

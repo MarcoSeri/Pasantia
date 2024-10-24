@@ -730,9 +730,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.825546
-  m_Height: 1.7238169
+  m_Height: 1.723817
   m_Direction: 2
-  m_Center: {x: 0, y: 0.17, z: -0.013520479}
+  m_Center: {x: 0, y: 0.17, z: -0.01352048}
 --- !u!114 &1542091186 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8820440040080254214, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
@@ -918,7 +918,7 @@ MonoBehaviour:
     size: 1
   - tag: Boya
     prefab: {fileID: 3330070090912067897, guid: e8c464c7dcdb81d4785f36ce61feb68e, type: 3}
-    size: 2
+    size: 1
 --- !u!4 &1811069391
 Transform:
   m_ObjectHideFlags: 0
@@ -1063,17 +1063,17 @@ MonoBehaviour:
   - Mapa3
   troncoTags:
   - tag: Tronco
-    probability: 35
+    probability: 40
   - tag: Tronco 2
-    probability: 35
+    probability: 40
   - tag: Tronco 1
-    probability: 30
+    probability: 20
   timeToSpawn:
   - 5
-  - 2
+  - 2.5
+  - 1.5
   - 1
   - 0.8
-  TimeToSpawnRockIndex: 0
 --- !u!4 &2080660354
 Transform:
   m_ObjectHideFlags: 0
@@ -1083,8 +1083,8 @@ Transform:
   m_GameObject: {fileID: 2080660352}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6427876, y: -0, z: -0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: 18.72, z: 24.87}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.97, y: 18.72, z: 24.87}
+  m_LocalScale: {x: 6.1972, y: 6.1972, z: 6.1972}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 963194228}

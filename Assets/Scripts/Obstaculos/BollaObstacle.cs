@@ -23,7 +23,7 @@ public class BollaObstacle : MonoBehaviour, IPooledObjects
     {
         // Movimiento vertical
         float newY = startPosition.y + Mathf.Sin(Time.time * frequency) * amplitude;
-        transform.position = new Vector3(startPosition.x, newY, startPosition.z);
+        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
 
         // Rotación oscilante alrededor de los ejes X e Z, manteniendo la orientación hacia arriba (sin cambiar el eje Y)
         float newRotationX = Mathf.Sin(Time.time * rotationFrequency) * rotationAmplitude;
@@ -44,5 +44,6 @@ public class BollaObstacle : MonoBehaviour, IPooledObjects
     public void OnObjectSpawn()
     {
         this.tag = "Bolla";
+
     }
 }

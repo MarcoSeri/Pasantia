@@ -77,7 +77,6 @@ public class GameController : MonoBehaviour
             if (maxPointsReached >= pointToReach[pointToReach.Length - 1] || maxPointsReached > pointToReach[i] && maxPointsReached < pointToReach[i+1])
             {
                 dificulty = dificulties[i];
-                Debug.Log(dificulty);
             }
         }
         camara.MoveCamera(dificulty);
