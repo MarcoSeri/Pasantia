@@ -16,10 +16,11 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float timeToStartSpawning = 1f;
     [SerializeField] private GameController gamecontrol;
     [SerializeField] private BarcoController boat;
+    [SerializeField] private ObjectPooler pooler;
     [SerializeField] private new CameraMovement camera;
     [SerializeField] private string[] mapTags;
-    [SerializeField] private TagProbability[] troncoTags;
     [SerializeField] private float[] timeToSpawn;
+    [SerializeField] private TagProbability[] troncoTags;
     
     private int TimeToSpawnRockIndex;
 
@@ -86,8 +87,8 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void SpawnSingleBuoy()
     {
-        float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
-        x = Mathf.Clamp(x, -15, 15);
+        float x = Random.Range(boat.transform.position.x - 8, boat.transform.position.x + 8);
+        x = Mathf.Clamp(x, -10, 10);
         objectPol.SpawnFromPool("Boya", new Vector3(x, transform.position.y + 1.3f, transform.position.z), Quaternion.identity);
     }
     #endregion
@@ -185,7 +186,11 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (spawnBuoyCoroutine != null)
             StopCoroutine(spawnBuoyCoroutine);
+
+        if (spawnBuqueCoroutine != null)
+            StopCoroutine(spawnBuqueCoroutine);
     }
+
 
     private string selectTag(TagProbability[] tags)
     {

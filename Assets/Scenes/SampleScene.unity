@@ -909,7 +909,7 @@ MonoBehaviour:
     size: 2
   - tag: Lifebuoy
     prefab: {fileID: 7706424776572715413, guid: f398287cab5cea447a25d3b46da5d646, type: 3}
-    size: 1
+    size: 2
   - tag: Camalote
     prefab: {fileID: 6140628736680852836, guid: 82409ea1013d647408220f0dfa1c8fd9, type: 3}
     size: 2
@@ -918,7 +918,7 @@ MonoBehaviour:
     size: 1
   - tag: Boya
     prefab: {fileID: 3330070090912067897, guid: e8c464c7dcdb81d4785f36ce61feb68e, type: 3}
-    size: 1
+    size: 2
 --- !u!4 &1811069391
 Transform:
   m_ObjectHideFlags: 0
@@ -1056,11 +1056,18 @@ MonoBehaviour:
   timeToStartSpawning: 1
   gamecontrol: {fileID: 2131050010}
   boat: {fileID: 1536528336}
+  pooler: {fileID: 0}
   camera: {fileID: 963194229}
   mapTags:
   - Mapa1
   - Mapa2
   - Mapa3
+  timeToSpawn:
+  - 5
+  - 2.5
+  - 1.5
+  - 1
+  - 0.8
   troncoTags:
   - tag: Tronco
     probability: 40
@@ -1068,12 +1075,6 @@ MonoBehaviour:
     probability: 40
   - tag: Tronco 1
     probability: 20
-  timeToSpawn:
-  - 5
-  - 2.5
-  - 1.5
-  - 1
-  - 0.8
 --- !u!4 &2080660354
 Transform:
   m_ObjectHideFlags: 0
