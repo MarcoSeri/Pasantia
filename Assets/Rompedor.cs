@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Rompedor : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private BarcoController controller;
+    private CameraMovement cam;
+
+
     void Start()
     {
         
@@ -15,4 +18,18 @@ public class Rompedor : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")){
+            controller.CambiarMultiplicadorVelocidad(2);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //IEnumerator
+    }
+
+
 }
