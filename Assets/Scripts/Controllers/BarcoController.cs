@@ -12,6 +12,7 @@ public class BarcoController : MonoBehaviour {
     [SerializeField] private float Vel_Tanque = 15f;
     [SerializeField] private float Vel_Rotacion = 120f;
     [SerializeField] private GameController GameController;
+    [SerializeField] private CameraMovement cam;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject[] remos;
 
@@ -20,6 +21,7 @@ public class BarcoController : MonoBehaviour {
     public bool bajarLaVelocidad = false;
     public int distance;
 
+    private bool seMueveSolo;
     private float mov_input;
     private float rot_input;
     private float rotacion = 0;
@@ -34,6 +36,7 @@ public class BarcoController : MonoBehaviour {
     }
 
     Coroutine startRotation;
+    Coroutine startMoverse;
 
     private void HandleSideCollision(bool side)
     {
@@ -48,6 +51,24 @@ public class BarcoController : MonoBehaviour {
         }
     }
 
+    public void SeMueveSolo()
+    {
+            startMoverse = StartCoroutine(seMueveSoloCorrutina());
+    }
+
+    public void StopCorroutine()
+    {
+        seMueveSolo = false;
+        StopCoroutine(startMoverse);
+    }
+
+    IEnumerator seMueveSoloCorrutina()
+    {
+        seMueveSolo = true;
+        yield return new WaitForSeconds(7.5f);
+        seMueveSolo = false;
+    }
+
     IEnumerator onSideCollision(Lado side,GameObject remo)
     {
         remo.SetActive(false);
@@ -55,7 +76,6 @@ public class BarcoController : MonoBehaviour {
         yield return new WaitForSeconds(5);
         modRotInput = Lado.No;
         remo.SetActive(true);
-        Debug.Log("Ya termino");
     }
 
     void Start() {
@@ -71,7 +91,10 @@ public class BarcoController : MonoBehaviour {
 
             if (modRotInput != Lado.No)
                 rot_input = modifyRotInput(modRotInput, rot_input, MinMax);
+
+            MoverSolo(600, seMueveSolo);
         }
+
         distance = Mathf.RoundToInt(transform.position.z);
     }
         void FixedUpdate() {
@@ -85,17 +108,17 @@ public class BarcoController : MonoBehaviour {
             }
 
             if(mov_input != 0 && rot_input != 0)
-            {
-            if (rot_input < 0)
-                animator.SetFloat("DerSpeed", 2);
+                {
+                if (rot_input < 0)
+                    animator.SetFloat("DerSpeed", 2);
+                else
+                    animator.SetFloat("IzqSpeed", 2);
+                }
             else
-                animator.SetFloat("IzqSpeed", 2);
+            {
+                animator.SetFloat("IzqSpeed", 1);
+                animator.SetFloat("DerSpeed", 1);
             }
-        else
-        {
-            animator.SetFloat("IzqSpeed", 1);
-            animator.SetFloat("DerSpeed", 1);
-        }
 
     }
 
@@ -129,6 +152,15 @@ public class BarcoController : MonoBehaviour {
     public void CambiarMultiplicadorVelocidad(float multiplicador)
     {
         modifier = multiplicador;
+    }
+
+    public void MoverSolo(float velocidad, bool seMueve)
+    {
+        if (seMueve)
+        {
+            cam.MoveCamera(20f);
+            rb.AddForce(transform.forward * velocidad * Time.deltaTime);
+        }
     }
 
     private float modifyRotInput (Lado side,float rot_input,float MinMax)

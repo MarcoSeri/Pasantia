@@ -180,11 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00058174133
+      value: 0.0005817413
       objectReference: {fileID: 0}
     - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.41
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -493,6 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b600e803b5d4604bace78bed3a6f589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 1536528336}
+  cam: {fileID: 963194229}
 --- !u!65 &710000700
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -717,6 +719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 3
   VelTransicion: 2
+  VelTransicionObstaculo: 0.5
   VelocidadesPorDificultad:
   - 1.5
   - 2.5
@@ -1545,6 +1548,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2852044019863120274, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 963194229}
     - target: {fileID: 2852044019863120274, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
       propertyPath: MinMax
       value: 0.5

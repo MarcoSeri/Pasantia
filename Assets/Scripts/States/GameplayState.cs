@@ -36,6 +36,7 @@ public class GameplayState : GameBaseState
         barcocontroler.BoatCrashed -= EndGame;
         borde.gameObject.SetActive(false);
         barcocontroler.DeleteForce();
+        barcocontroler.StopCorroutine();
         spawner.StopSpawner();
     }
 

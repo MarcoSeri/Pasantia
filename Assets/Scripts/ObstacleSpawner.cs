@@ -78,7 +78,6 @@ public class ObstacleSpawner : MonoBehaviour
         yield return new WaitForSeconds(2f);
         while (gamecontrol.OnGame == true) //game is running
         {
-            Debug.Log("Spawnea dale");
             SpawnSingleBuoy();
             float randomTimer = Random.Range(8, 15);
             yield return new WaitForSeconds(randomTimer);

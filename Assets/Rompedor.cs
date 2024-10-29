@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Rompedor : MonoBehaviour
 {
-    private BarcoController controller;
-    private CameraMovement cam;
+    [SerializeField] private BarcoController controller;
+    [SerializeField] private CameraMovement cam;
 
 
     void Start()
@@ -22,14 +22,7 @@ public class Rompedor : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")){
-            controller.CambiarMultiplicadorVelocidad(2);
+            controller.SeMueveSolo();
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        //IEnumerator
-    }
-
-
 }
