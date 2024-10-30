@@ -21,11 +21,13 @@ public class BarcoController : MonoBehaviour {
     public bool bajarLaVelocidad = false;
     public int distance;
 
+    [SerializeField] private Material[] materiales;
     private bool seMueveSolo;
     private float mov_input;
     private float rot_input;
     private float rotacion = 0;
     private float modifier = 1;
+
 
     Lado modRotInput = Lado.No;
     public enum Lado
@@ -66,6 +68,8 @@ public class BarcoController : MonoBehaviour {
     {
         seMueveSolo = true;
         yield return new WaitForSeconds(7.5f);
+        cambiarMaterial(false);
+        Physics.IgnoreLayerCollision(6, 7, false);
         seMueveSolo = false;
     }
 
@@ -92,7 +96,7 @@ public class BarcoController : MonoBehaviour {
             if (modRotInput != Lado.No)
                 rot_input = modifyRotInput(modRotInput, rot_input, MinMax);
 
-            MoverSolo(600, seMueveSolo);
+            MoverSolo(seMueveSolo);
         }
 
         distance = Mathf.RoundToInt(transform.position.z);
@@ -154,12 +158,14 @@ public class BarcoController : MonoBehaviour {
         modifier = multiplicador;
     }
 
-    public void MoverSolo(float velocidad, bool seMueve)
+    public void MoverSolo(bool seMueve)
     {
         if (seMueve)
         {
+            cambiarMaterial(true);
+            Physics.IgnoreLayerCollision(6, 7, true);
             cam.MoveCamera(20f);
-            rb.AddForce(transform.forward * velocidad * Time.deltaTime);
+            rb.AddForce(transform.forward * 550 * Time.deltaTime);
         }
     }
 
@@ -169,5 +175,38 @@ public class BarcoController : MonoBehaviour {
             return Mathf.Clamp(rot_input, -1, MinMax);
         else
             return Mathf.Clamp(rot_input, -MinMax, 1);
+    }
+
+    private void cambiarMaterial(bool aTransparente)
+    {
+        Renderer cubeRenderer = transform.Find("BarcoNoAnimations2/Cube").GetComponent<Renderer>();
+        Renderer remoRenderer = transform.Find("BarcoNoAnimations2/Remo 1").GetComponent<Renderer>();
+        Renderer remo1Renderer = transform.Find("BarcoNoAnimations2/Remo 1.001").GetComponent<Renderer>();
+        Material[] cubeMaterials = cubeRenderer.materials;
+
+        if (aTransparente)
+        {
+            cubeMaterials[0] = materiales[1];
+            cubeMaterials[1] = materiales[3];
+
+            cubeRenderer.materials = cubeMaterials;
+
+            remoRenderer.material = materiales[5];
+
+            remo1Renderer.material = materiales[5];
+        }
+        else 
+        {
+            cubeMaterials[0] = materiales[0];
+            cubeMaterials[1] = materiales[2];
+
+            cubeRenderer.materials = cubeMaterials;
+
+            remoRenderer.material = materiales[4];
+
+            remo1Renderer.material = materiales[4];
+        }
+
+
     }
 }

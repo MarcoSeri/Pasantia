@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1962511573660976560}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boya
   m_TagString: Bolla
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2928975149355432915}
   - component: {fileID: 983134592205249315}
   - component: {fileID: 6966090783636123184}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boya2.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

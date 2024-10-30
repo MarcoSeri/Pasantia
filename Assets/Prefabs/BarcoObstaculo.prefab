@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8355178621845079228}
   - component: {fileID: 5269760066465844402}
   - component: {fileID: 7021818485669178737}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BarcoObstaculo
   m_TagString: Buque
   m_Icon: {fileID: 0}
@@ -144,6 +144,10 @@ PrefabInstance:
     - target: {fileID: 3210242191295913695, guid: 98db26e894714ab42a5329d6cd767c2f, type: 3}
       propertyPath: m_Name
       value: Scout_Boat
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210242191295913695, guid: 98db26e894714ab42a5329d6cd767c2f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6521665370918471702, guid: 98db26e894714ab42a5329d6cd767c2f, type: 3}
       propertyPath: m_Convex
