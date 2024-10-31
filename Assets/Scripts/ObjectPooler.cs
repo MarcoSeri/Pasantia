@@ -24,6 +24,9 @@ public class ObjectPooler : MonoBehaviour
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
+    public BarcoController boatController;
+    public CameraMovement camMovement;
+
     void Start()
     {
      poolDictionary = new Dictionary<string, Queue<GameObject>>();
@@ -56,7 +59,7 @@ public class ObjectPooler : MonoBehaviour
 
         objectToSpawn.transform.rotation = rotation;
         objectToSpawn.transform.position = position;
-        
+
         IPooledObjects pooledObj = objectToSpawn.GetComponentInChildren<IPooledObjects>();
         
         if(pooledObj != null){

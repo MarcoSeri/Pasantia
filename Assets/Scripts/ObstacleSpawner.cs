@@ -29,6 +29,7 @@ public class ObstacleSpawner : MonoBehaviour
     Coroutine spawnCamaloteCoroutine;
     Coroutine spawnBuoyCoroutine;
     Coroutine spawnBuqueCoroutine;
+    Coroutine spawnBoosterVelocidadCoroutine;
 
     private void Update()
     {
@@ -64,8 +65,6 @@ public class ObstacleSpawner : MonoBehaviour
         objectPol.SpawnFromPool("Buque", new Vector3(x, transform.position.y + 1.4f, transform.position.z), Quaternion.identity);
     }
     #endregion
-
-
 
     #region Boya
     public void StartBuoyCoroutine()
@@ -136,6 +135,30 @@ public class ObstacleSpawner : MonoBehaviour
     }
     #endregion
 
+    #region BoosterVelocidad
+    public void StartBoosterCoroutine()
+    {
+        spawnBoosterVelocidadCoroutine = StartCoroutine(SpawnBoosterVelocidadCoroutine());
+    }
+
+    IEnumerator SpawnBoosterVelocidadCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        while (gamecontrol.OnGame == true) //game is running
+        {
+            SpawnBoosterVelocidad();
+            Debug.Log("hola");
+            yield return new WaitForSeconds(30);
+        }
+    }
+
+    private void SpawnBoosterVelocidad()
+    {
+        float x = Random.Range(boat.transform.position.x - 5, boat.transform.position.x + 5);
+        x = Mathf.Clamp(x, -15, 15);
+        objectPol.SpawnFromPool("BoosterVelocidad", new Vector3(x, transform.position.y + 0.4f, transform.position.z), Quaternion.identity);
+    }
+    #endregion
 
     public void spawnObstacle()
     {

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Compilation;
 using UnityEngine;
 using TMPro;
 
@@ -26,7 +25,7 @@ public class BarcoController : MonoBehaviour {
     private float mov_input;
     private float rot_input;
     private float rotacion = 0;
-    private float modifier = 1;
+    public float modifier = 1;
 
 
     Lado modRotInput = Lado.No;
@@ -61,13 +60,16 @@ public class BarcoController : MonoBehaviour {
     public void StopCorroutine()
     {
         seMueveSolo = false;
-        StopCoroutine(startMoverse);
+        if(startMoverse != null)
+            StopCoroutine(startMoverse);
     }
 
     IEnumerator seMueveSoloCorrutina()
     {
         seMueveSolo = true;
         yield return new WaitForSeconds(7.5f);
+        bajarVelocidadBarco();
+        cam.ReinicioCamaraSuave();
         cambiarMaterial(false);
         Physics.IgnoreLayerCollision(6, 7, false);
         seMueveSolo = false;
@@ -175,6 +177,11 @@ public class BarcoController : MonoBehaviour {
             return Mathf.Clamp(rot_input, -1, MinMax);
         else
             return Mathf.Clamp(rot_input, -MinMax, 1);
+    }
+
+    private void bajarVelocidadBarco()
+    {
+        rb.AddForce(transform.forward * -700);
     }
 
     private void cambiarMaterial(bool aTransparente)

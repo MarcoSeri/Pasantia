@@ -6,7 +6,6 @@ public class BasicObstacle : MonoBehaviour, IPooledObjects
     public float amplitude = 1f;  // Amplitud del movimiento
     public float frequency = 1.0f;  // Frecuencia del movimiento
     private Vector3 startPosition;
-    private float x = 0;
     private int[] izqOrDerList = new int[] { 1, -1 };
     private int izqOrDer = 1;
 

@@ -38,6 +38,11 @@ public class CameraMovement : MonoBehaviour{
         transform.Translate(new Vector3(0, 0, velocidadSuave * Time.deltaTime), Space.World);
     }
 
+    public void ReinicioCamaraSuave()
+    {
+        velocidadSuave = 0;
+    }
+
 
     public void OnTriggerEnter(Collider other)
     {

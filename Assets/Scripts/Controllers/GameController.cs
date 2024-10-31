@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour
         Physics.SyncTransforms();
         barco.transform.position = new Vector3(0, barco.transform.position.y, 0);
         barco.transform.rotation = new Quaternion(0, 0, 0, 0);
+        barco.CambiarMultiplicadorVelocidad(1);
+        barco.bajarLaVelocidad = false;
         maxPointsReached = 0;
         //barco.DeleteForce();
     }
@@ -64,7 +66,10 @@ public class GameController : MonoBehaviour
         if (dificulty != currentDificulty)
         {
             if (dificulty == 2)
+            {
                 spawner.StarLifebuoyCoroutine();
+                spawner.StartBoosterCoroutine();
+            }
 
             if (dificulty == 3)
                 spawner.StartBuoyCoroutine();

@@ -10,7 +10,8 @@ public class Rompedor : MonoBehaviour
 
     void Start()
     {
-        
+        controller = FindObjectOfType<BarcoController>();
+        cam = FindObjectOfType<CameraMovement>();
     }
 
     // Update is called once per frame
