@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
         barco.CambiarMultiplicadorVelocidad(1);
         barco.bajarLaVelocidad = false;
         maxPointsReached = 0;
+
         //barco.DeleteForce();
     }
 

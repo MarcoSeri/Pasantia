@@ -10,22 +10,23 @@ public class BarcoController : MonoBehaviour {
     [SerializeField] private float MinMax;
     [SerializeField] private float Vel_Tanque = 15f;
     [SerializeField] private float Vel_Rotacion = 120f;
+
     [SerializeField] private GameController GameController;
     [SerializeField] private CameraMovement cam;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject[] remos;
+    [SerializeField] private Material[] materiales;
 
     public Action BoatCrashed;
     public Action<bool> SideCollision;
-    public bool bajarLaVelocidad = false;
+    public float modifier = 1;
     public int distance;
+    public bool bajarLaVelocidad = false;
 
-    [SerializeField] private Material[] materiales;
     private bool seMueveSolo;
     private float mov_input;
     private float rot_input;
     private float rotacion = 0;
-    public float modifier = 1;
 
 
     Lado modRotInput = Lado.No;
@@ -57,17 +58,25 @@ public class BarcoController : MonoBehaviour {
             startMoverse = StartCoroutine(seMueveSoloCorrutina());
     }
 
+    IEnumerator seMueveSoloCorrutina()
+    {
+        seMueveSolo = true;
+        yield return new WaitForSeconds(5);
+        volverNormal();
+    }
+
     public void StopCorroutine()
     {
         seMueveSolo = false;
         if(startMoverse != null)
+        {
             StopCoroutine(startMoverse);
+            volverNormal();
+        }
     }
 
-    IEnumerator seMueveSoloCorrutina()
+    private void volverNormal()
     {
-        seMueveSolo = true;
-        yield return new WaitForSeconds(7.5f);
         bajarVelocidadBarco();
         cam.ReinicioCamaraSuave();
         cambiarMaterial(false);
@@ -75,14 +84,16 @@ public class BarcoController : MonoBehaviour {
         seMueveSolo = false;
     }
 
+
     IEnumerator onSideCollision(Lado side,GameObject remo)
     {
         remo.SetActive(false);
         modRotInput = side;
         yield return new WaitForSeconds(5);
-        modRotInput = Lado.No;
+        modRotInput = Lado.No; //Reiniciar REmos cuando pierde
         remo.SetActive(true);
     }
+
 
     void Start() {
         SideCollision += HandleSideCollision;
