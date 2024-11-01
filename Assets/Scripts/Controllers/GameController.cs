@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
         camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y,0);
         Physics.SyncTransforms();
         barco.transform.position = new Vector3(0, barco.transform.position.y, 0);
+        barco.transform.position = new Vector3(0, barco.transform.position.y, 0);
         barco.transform.rotation = new Quaternion(0, 0, 0, 0);
         barco.CambiarMultiplicadorVelocidad(1);
         barco.bajarLaVelocidad = false;
@@ -73,10 +74,16 @@ public class GameController : MonoBehaviour
             }
 
             if (dificulty == 3)
+            {
                 spawner.StartBuoyCoroutine();
+                Debug.Log("Dificultad 3");
+            }
 
             if (dificulty == 4)
+            {
                 spawner.StartBuqueCoroutine();
+                Debug.Log("Dificultad 4");
+            }
 
             currentDificulty = dificulty;
         }

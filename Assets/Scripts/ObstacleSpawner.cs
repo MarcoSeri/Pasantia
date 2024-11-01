@@ -13,7 +13,6 @@ public class TagProbability
 public class ObstacleSpawner : MonoBehaviour
 {
     public ObjectPooler objectPol;
-    [SerializeField] private float timeToStartSpawning = 1f;
     [SerializeField] private GameController gamecontrol;
     [SerializeField] private BarcoController boat;
     [SerializeField] private ObjectPooler pooler;
@@ -22,7 +21,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float[] timeToSpawn;
     [SerializeField] private TagProbability[] troncoTags;
     
-    private int TimeToSpawnRockIndex;
+    public int TimeToSpawnRockIndex;
 
     Coroutine spawnBasicCoroutine;
     Coroutine spawnLifebuoyCoroutine;
@@ -100,7 +99,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     IEnumerator SpawnCoroutine()
     {
-        yield return new WaitForSeconds(timeToStartSpawning);
+        yield return new WaitForSeconds(1);
         while (gamecontrol.OnGame == true) //game is running
         {
             SpawnSingleRock();
@@ -200,7 +199,7 @@ public class ObstacleSpawner : MonoBehaviour
     }
     public void StopSpawner()
     {
-        StopCoroutine(spawnBasicCoroutine);
+    /*    StopCoroutine(spawnBasicCoroutine);
         StopCoroutine(spawnCamaloteCoroutine);
 
         if (spawnLifebuoyCoroutine != null)
@@ -210,7 +209,8 @@ public class ObstacleSpawner : MonoBehaviour
             StopCoroutine(spawnBuoyCoroutine);
 
         if (spawnBuqueCoroutine != null)
-            StopCoroutine(spawnBuqueCoroutine);
+            StopCoroutine(spawnBuqueCoroutine);*/
+    StopAllCoroutines();
     }
 
 

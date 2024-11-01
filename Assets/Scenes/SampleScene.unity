@@ -396,63 +396,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1308241338784939383, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
   m_PrefabInstance: {fileID: 5482801536745383053}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &785898922
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 264160302547897291, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_Name
-      value: Rompedor
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.2405052
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0005836487
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.7948475
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 968358919506278530, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
 --- !u!1 &894517927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 916978742956039016, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
@@ -1116,7 +1059,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPol: {fileID: 1811069390}
-  timeToStartSpawning: 1
   gamecontrol: {fileID: 2131050010}
   boat: {fileID: 1536528336}
   pooler: {fileID: 0}
@@ -1138,6 +1080,7 @@ MonoBehaviour:
     probability: 40
   - tag: Tronco 1
     probability: 20
+  TimeToSpawnRockIndex: 0
 --- !u!4 &2080660354
 Transform:
   m_ObjectHideFlags: 0
@@ -1623,4 +1566,3 @@ SceneRoots:
   - {fileID: 1811069391}
   - {fileID: 5482801536745383053}
   - {fileID: 1974266425127219543}
-  - {fileID: 785898922}
