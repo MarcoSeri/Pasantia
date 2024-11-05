@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using JetBrains.Annotations;
 
 public class BarcoController : MonoBehaviour {
     private Rigidbody rb;
@@ -87,6 +88,7 @@ public class BarcoController : MonoBehaviour {
 
     IEnumerator onSideCollision(Lado side,GameObject remo)
     {
+        //SoundManager.PlaySound();
         remo.SetActive(false);
         modRotInput = side;
         yield return new WaitForSeconds(5);
@@ -224,7 +226,5 @@ public class BarcoController : MonoBehaviour {
 
             remo1Renderer.material = materiales[4];
         }
-
-
     }
 }

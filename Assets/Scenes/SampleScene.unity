@@ -1184,6 +1184,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1308241338784939383, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1408957334270004641, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
       propertyPath: m_text
       value: hiciste puntos
@@ -1399,6 +1403,10 @@ PrefabInstance:
     - target: {fileID: 2852044019863120274, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
       propertyPath: MinMax
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2852044019863120274, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
+      propertyPath: AudioPlayer
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2852044019863120274, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
       propertyPath: GameController
