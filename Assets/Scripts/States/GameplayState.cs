@@ -13,6 +13,7 @@ public class GameplayState : GameBaseState
     public Action EndGames;
 
     private void Awake() {
+        Application.targetFrameRate = 15;
         base.Awake();
         borde.gameObject.SetActive(false);
     }
@@ -22,7 +23,8 @@ public class GameplayState : GameBaseState
         borde.gameObject.SetActive(true);
         spawner.StartBasicCoroutine();
         barcocontroler.BoatCrashed += EndGame;
-        gamecontroler.SetUp();
+        barcocontroler.ResetCamera();
+
     }
 
     private IEnumerator WaitToStart()
@@ -35,9 +37,10 @@ public class GameplayState : GameBaseState
         gamecontroler.OnGame = false;
         barcocontroler.BoatCrashed -= EndGame;
         borde.gameObject.SetActive(false);
-        barcocontroler.DeleteForce();
         barcocontroler.StopCorroutine();
         spawner.StopSpawner();
+        gamecontroler.SetUp();
+        barcocontroler.SeUndioElBarco();
     }
 
     public override void UpdateState()

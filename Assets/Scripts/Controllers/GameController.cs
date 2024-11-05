@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GameController : MonoBehaviour 
 {
@@ -29,16 +30,10 @@ public class GameController : MonoBehaviour
     public void SetUp() 
     {
         barco.DeleteForce();
-        camara.transform.position = new Vector3(camara.transform.position.x, camara.transform.position.y,0);
         Physics.SyncTransforms();
-        barco.transform.position = new Vector3(0, barco.transform.position.y, 0);
-        barco.transform.position = new Vector3(0, barco.transform.position.y, 0);
-        barco.transform.rotation = new Quaternion(0, 0, 0, 0);
         barco.CambiarMultiplicadorVelocidad(1);
         barco.bajarLaVelocidad = false;
         maxPointsReached = 0;
-
-        //barco.DeleteForce();
     }
 
     // Update is called once per frame

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using JetBrains.Annotations;
+using DG.Tweening;
+
 
 public class BarcoController : MonoBehaviour {
     private Rigidbody rb;
@@ -226,5 +228,19 @@ public class BarcoController : MonoBehaviour {
 
             remo1Renderer.material = materiales[4];
         }
+    }
+
+    public void ResetCamera()
+    {
+        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, 0);
+        animator.SetBool("Undir", false);
+    }
+
+    public void SeUndioElBarco()
+    {
+        transform.DOMoveY(-2, 1).OnComplete(()=> {
+            transform.SetPositionAndRotation(new Vector3(0, transform.position.y, 4), new Quaternion(0, 0, 0, 0));
+            transform.DOMoveY(1, 0);
+        });
     }
 }
