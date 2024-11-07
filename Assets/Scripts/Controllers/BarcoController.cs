@@ -31,6 +31,8 @@ public class BarcoController : MonoBehaviour {
     private float rot_input;
     private float rotacion = 0;
 
+    Vector3 initialPos;
+
 
     Lado modRotInput = Lado.No;
     public enum Lado
@@ -42,6 +44,11 @@ public class BarcoController : MonoBehaviour {
 
     Coroutine startRotation;
     Coroutine startMoverse;
+
+    private void Awake()
+    {
+        initialPos = transform.position;
+    }
 
     private void HandleSideCollision(bool side)
     {
@@ -238,9 +245,22 @@ public class BarcoController : MonoBehaviour {
 
     public void SeUndioElBarco()
     {
-        transform.DOMoveY(-2, 1).OnComplete(()=> {
-            transform.SetPositionAndRotation(new Vector3(0, transform.position.y, 4), new Quaternion(0, 0, 0, 0));
-            transform.DOMoveY(1, 0);
+        rb.Sleep();
+        rb.isKinematic = true;
+        rb.useGravity = false;
+        transform.DOMoveY(-1, .8f).OnComplete(()=> 
+        {                     
+            transform.position = initialPos;
+            transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            Physics.SyncTransforms();
         });
+    }
+
+    public void ResetPhysics()
+    {
+                rb.isKinematic = false;
+                rb.WakeUp();
+                rb.useGravity = true;
+                GameController.SetUp();
     }
 }

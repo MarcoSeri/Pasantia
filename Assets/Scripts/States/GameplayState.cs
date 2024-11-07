@@ -13,12 +13,13 @@ public class GameplayState : GameBaseState
     public Action EndGames;
 
     private void Awake() {
-        Application.targetFrameRate = 15;
+        Application.targetFrameRate = 30;
         base.Awake();
         borde.gameObject.SetActive(false);
     }
     public override void EnterState()
     {
+        barcocontroler.ResetPhysics();
         gamecontroler.OnGame = true;
         borde.gameObject.SetActive(true);
         spawner.StartBasicCoroutine();
@@ -39,7 +40,6 @@ public class GameplayState : GameBaseState
         borde.gameObject.SetActive(false);
         barcocontroler.StopCorroutine();
         spawner.StopSpawner();
-        gamecontroler.SetUp();
         barcocontroler.SeUndioElBarco();
     }
 

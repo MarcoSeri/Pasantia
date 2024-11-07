@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     public void SetUp() 
     {
         barco.DeleteForce();
-        Physics.SyncTransforms();
+        //Physics.SyncTransforms();
         barco.CambiarMultiplicadorVelocidad(1);
         barco.bajarLaVelocidad = false;
         maxPointsReached = 0;
@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
         if (OnGame == true)
         {
             maxPointsReached = score(barco.transform.position.z*10, maxPointsReached);
-            ui.ShowScore(maxPointsReached);
+            ui.ShowScore(maxPointsReached-40);
             MoveCamera();
         }
     }
