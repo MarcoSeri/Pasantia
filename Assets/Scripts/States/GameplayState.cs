@@ -13,7 +13,7 @@ public class GameplayState : GameBaseState
     public Action EndGames;
 
     private void Awake() {
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
         base.Awake();
         borde.gameObject.SetActive(false);
     }
