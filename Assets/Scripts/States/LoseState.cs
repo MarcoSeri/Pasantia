@@ -13,6 +13,7 @@ public class LoseState : GameBaseState
 
     public override void EnterState()
     {
+        SoundManager.PlaySound(SoundManager.Sound.BoteRoto, 1);
         uiManager.Open("lose");
         uiController.ShowFinalScore(Gameplay.Points);
         Start.onClick.AddListener(OnStartPressed);

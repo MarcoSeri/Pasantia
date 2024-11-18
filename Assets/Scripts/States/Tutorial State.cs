@@ -10,6 +10,7 @@ public class TutorialState : GameBaseState
 
     public override void EnterState()
     {
+        SoundManager.PlaySound(SoundManager.Sound.Click, 1);
         uiManager.Open("tutorial");
         Start.onClick.AddListener(OnStartPressed);
     }

@@ -25,6 +25,7 @@ public class BarcoController : MonoBehaviour {
     public float modifier = 1;
     public int distance;
     public bool bajarLaVelocidad = false;
+    private bool _bajarLaVelocidad = false;
 
     private bool seMueveSolo;
     private float mov_input;
@@ -126,8 +127,14 @@ public class BarcoController : MonoBehaviour {
         distance = Mathf.RoundToInt(transform.position.z);
     }
         void FixedUpdate() {
-            if(bajarLaVelocidad)
-                rb.velocity = Vector3.SmoothDamp(rb.velocity, Vector3.one, ref currentVelocity, 0.5f);
+            if(bajarLaVelocidad != _bajarLaVelocidad && bajarLaVelocidad == true)
+            {
+            SoundManager.PlaySound(SoundManager.Sound.EntrarCamalote, 1);
+            }
+            _bajarLaVelocidad = bajarLaVelocidad;
+            
+        if(bajarLaVelocidad)
+            rb.velocity = Vector3.SmoothDamp(rb.velocity, Vector3.one, ref currentVelocity, 0.5f);
 
         if (GameController.OnGame == true)
             {
@@ -182,15 +189,23 @@ public class BarcoController : MonoBehaviour {
         modifier = multiplicador;
     }
 
+    bool _seMueve = false;
     public void MoverSolo(bool seMueve)
     {
+
         if (seMueve)
         {
-            cambiarMaterial(true);
+            if(seMueve != _seMueve)
+            {
+                cambiarMaterial(true);
+            }
+
             Physics.IgnoreLayerCollision(6, 7, true);
             cam.MoveCamera(20f);
             rb.AddForce(transform.forward * 550 * Time.deltaTime);
         }
+
+        _seMueve = seMueve;     
     }
 
     private float modifyRotInput (Lado side,float rot_input,float MinMax)
@@ -215,6 +230,8 @@ public class BarcoController : MonoBehaviour {
 
         if (aTransparente)
         {
+            SoundManager.PlaySound(SoundManager.Sound.PowerUpVelocidad,1);
+
             cubeMaterials[0] = materiales[1];
             cubeMaterials[1] = materiales[3];
 
@@ -262,5 +279,24 @@ public class BarcoController : MonoBehaviour {
                 rb.WakeUp();
                 rb.useGravity = true;
                 GameController.SetUp();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        float fuerzaGolpe = collision.relativeVelocity.magnitude;
+        if (collision.gameObject.name == "tronco")
+        {
+            SoundManager.PlaySound(SoundManager.Sound.GolpeTronco, .07f * fuerzaGolpe);
+        }
+
+        if (collision.gameObject.name == "LifeBuoy")
+        {
+            SoundManager.PlaySound(SoundManager.Sound.Rebote, 1);
+        }
+
+        if (collision.gameObject.name == "Boya2.1")
+        {
+            SoundManager.PlaySound(SoundManager.Sound.GolpeBolla, .07f * fuerzaGolpe);
+        }
     }
 }

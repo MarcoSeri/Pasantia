@@ -19,6 +19,7 @@ public class GameplayState : GameBaseState
     }
     public override void EnterState()
     {
+        SoundManager.PlaySound(SoundManager.Sound.Click, 1);
         barcocontroler.ResetPhysics();
         gamecontroler.OnGame = true;
         borde.gameObject.SetActive(true);

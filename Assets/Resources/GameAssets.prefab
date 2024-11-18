@@ -44,4 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb0a6eb650196b4ab1395453f5d9daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GolpeBolla: {fileID: 8300000, guid: 9036fa80691aa2048b99a75ffef0c5b6, type: 3}
+  soundAudioClipArray:
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: a6dece716c61eec4c886b30d92f9f217, type: 3}
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: 1dc76d2242238e345a81bb8dcf64debb, type: 3}
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: 9036fa80691aa2048b99a75ffef0c5b6, type: 3}
+  - sound: 3
+    audioClip: {fileID: 8300000, guid: 8a97b7bd65224274fb1092161de28bbd, type: 3}
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: 01b7a9a4c3c7b59459c1fbee314300a4, type: 3}
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: f4b2ba54ff965f74ab31bf58941b8c65, type: 3}
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: 6e4cfb3433574b245bd1dc112714faea, type: 3}
+  - sound: 7
+    audioClip: {fileID: 8300000, guid: 746288888594ed842bd0e4f7d2c11844, type: 3}
