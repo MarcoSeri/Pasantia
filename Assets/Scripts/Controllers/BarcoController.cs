@@ -73,6 +73,7 @@ public class BarcoController : MonoBehaviour {
     {
         seMueveSolo = true;
         yield return new WaitForSeconds(5);
+        
         volverNormal();
     }
 

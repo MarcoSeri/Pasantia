@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     [SerializeField] int[] dificulties;
     public int Points => maxPointsReached;
     public bool OnGame = false;
-    public int maxPointsReached = 0;
+    private int maxPointsReached = 0;
     private int dificulty = 1;
     private int currentDificulty = 1;
 

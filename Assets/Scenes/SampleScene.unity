@@ -160,51 +160,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9015840482845620308, guid: 2b858bb9cc2ba924b9c8bdcb9787c049, type: 3}
   m_PrefabInstance: {fileID: 5716891765531424483}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &369767784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 369767786}
-  - component: {fileID: 369767785}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &369767785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369767784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 881a8a4254c2aef40aed2c65f3555b6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  states: {fileID: 1645750097}
---- !u!4 &369767786
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 369767784}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.800012, y: 6.008647, z: -6.800786}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &492558047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -905,8 +860,6 @@ MonoBehaviour:
   - tag: BoosterVelocidad
     prefab: {fileID: 264160302547897291, guid: b843b24c81fd65044aab0a79a4f87b3f, type: 3}
     size: 1
-  boatController: {fileID: 1536528336}
-  camMovement: {fileID: 963194229}
 --- !u!4 &1811069391
 Transform:
   m_ObjectHideFlags: 0
@@ -1167,7 +1120,6 @@ MonoBehaviour:
   pointToReach: 00000000ee020000c40900009411000070170000
   dificulties: 0100000002000000030000000400000005000000
   OnGame: 0
-  maxPointsReached: 0
 --- !u!4 &2131050011
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,6 +1168,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2.5085704
       objectReference: {fileID: 0}
+    - target: {fileID: 2847360421787731287, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3413052689791070235, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
       propertyPath: m_SizeDelta.x
       value: 244.61
@@ -1235,6 +1191,10 @@ PrefabInstance:
     - target: {fileID: 3413052689791070235, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -69
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453290602815567254, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652897625819590718, guid: fdcf34acff89e5541bbd121241175fcd, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1709,7 +1669,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1532255985}
   - {fileID: 2131050011}
-  - {fileID: 369767786}
   - {fileID: 1645750098}
   - {fileID: 1811069391}
   - {fileID: 5482801536745383053}

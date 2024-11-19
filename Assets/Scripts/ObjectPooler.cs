@@ -24,9 +24,6 @@ public class ObjectPooler : MonoBehaviour
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
-    public BarcoController boatController;
-    public CameraMovement camMovement;
-
     void Start()
     {
      poolDictionary = new Dictionary<string, Queue<GameObject>>();

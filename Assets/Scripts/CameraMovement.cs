@@ -15,7 +15,6 @@ public class CameraMovement : MonoBehaviour{
 
     void Start(){
     }
-
     void FixedUpdate(){
     }
 
