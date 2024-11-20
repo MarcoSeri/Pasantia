@@ -20,7 +20,6 @@ public class BuqueSound : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-        Debug.Log("Hola buque");
             SoundManager.PlaySound(SoundManager.Sound.Buque, 0.1f);
         }
     }

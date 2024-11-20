@@ -11,6 +11,7 @@ public class UiManager : MonoBehaviour
 
     private void Awake() {
         lose.gameObject.SetActive(false);
+        gameplay.gameObject.SetActive(false);
     }
 
     public void Open(string caso)
@@ -27,6 +28,9 @@ public class UiManager : MonoBehaviour
             case "tutorial":
                 tutorial.SetActive(true);
                 break;
+            case "gameplay":
+                gameplay.SetActive(true);
+                break;
         }
     }
     public void Close(string caso)
@@ -41,6 +45,9 @@ public class UiManager : MonoBehaviour
                 lose.SetActive(false);
                 break;
             case "tutorial":
+                tutorial.SetActive(false);
+                break;
+            case "gameplay":
                 tutorial.SetActive(false);
                 break;
         }
