@@ -7,10 +7,12 @@ public class ColliderController : MonoBehaviour
 {
     private Collider borde;
     [SerializeField] private BarcoController boat;
+    [SerializeField] private GameController gameController;
 
     void Start()
     {
         boat = GameObject.FindGameObjectWithTag("Player").GetComponent<BarcoController>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         borde = GetComponent<Collider>();
     
     }
@@ -21,7 +23,7 @@ public class ColliderController : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && gameController.OnGame)
         {
             boat.BoatCrashed.Invoke();
         }

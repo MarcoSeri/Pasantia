@@ -48,7 +48,7 @@ public class BarcoController : MonoBehaviour {
 
     private void Awake()
     {
-        initialPos = transform.position;
+        initialPos = new Vector3(0,0.5f,4);
     }
 
     private void HandleSideCollision(bool side)
@@ -256,7 +256,8 @@ public class BarcoController : MonoBehaviour {
 
     public void ResetCamera()
     {
-        cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, 0);
+        cam.transform.position = new Vector3(0,20.74f,0);
+        cam.transform.rotation = Quaternion.Euler(80,0,0);
         animator.SetBool("Undir", false);
     }
 
@@ -271,6 +272,13 @@ public class BarcoController : MonoBehaviour {
             transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
             Physics.SyncTransforms();
         });
+    }
+
+    public void ResetPos()
+    {
+        transform.position = initialPos;
+        transform.localRotation = Quaternion.Euler(0, 0f, 0f);
+        Physics.SyncTransforms();
     }
 
     public void ResetPhysics()

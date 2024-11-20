@@ -71,13 +71,11 @@ public class GameController : MonoBehaviour
             if (dificulty == 3)
             {
                 spawner.StartBuoyCoroutine();
-                Debug.Log("Dificultad 3");
             }
 
             if (dificulty == 4)
             {
                 spawner.StartBuqueCoroutine();
-                Debug.Log("Dificultad 4");
             }
 
             currentDificulty = dificulty;
