@@ -6,16 +6,21 @@ using UnityEngine.UI;
 public class MenuState : GameBaseState
 {
     [SerializeField] private Button Start;
+    [SerializeField] private Button Creditos;
     [SerializeField] private Button Salir;
     [SerializeField] private UiManager uiManager;
    
     public override void EnterState()
     {
         uiManager.Open("Menu");
-        Start.onClick.AddListener(OnStartPressed);
+        Start.onClick.AddListener(() => ChangeState(2));
+        Creditos.onClick.AddListener(() => ChangeState(1));
         Salir.onClick.AddListener(OnSalirPressed);
     }
-
+    void ChangeState(int index)
+    {
+        StateManager.ChangeState(index);
+    }
     void OnStartPressed()
     {
         StateManager.NextState();

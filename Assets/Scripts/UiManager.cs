@@ -8,10 +8,12 @@ public class UiManager : MonoBehaviour
     [SerializeField] GameObject gameplay; //preguntar por esto
     [SerializeField] GameObject lose;
     [SerializeField] GameObject tutorial;
+    [SerializeField] GameObject creditos;
 
     private void Awake() {
         lose.gameObject.SetActive(false);
         gameplay.gameObject.SetActive(false);
+        creditos.gameObject.SetActive(false);
     }
 
     public void Open(string caso)
@@ -31,6 +33,9 @@ public class UiManager : MonoBehaviour
             case "gameplay":
                 gameplay.SetActive(true);
                 break;
+            case "creditos":
+                creditos.SetActive(true);
+                break;
         }
     }
     public void Close(string caso)
@@ -49,6 +54,9 @@ public class UiManager : MonoBehaviour
                 break;
             case "gameplay":
                 tutorial.SetActive(false);
+                break;
+            case "creditos":
+                creditos.SetActive(false);
                 break;
         }
     }

@@ -146,7 +146,6 @@ public class ObstacleSpawner : MonoBehaviour
         while (gamecontrol.OnGame == true) //game is running
         {
             SpawnBoosterVelocidad();
-            Debug.Log("hola");
             yield return new WaitForSeconds(30);
         }
     }

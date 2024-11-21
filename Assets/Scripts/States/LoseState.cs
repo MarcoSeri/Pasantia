@@ -22,7 +22,7 @@ public class LoseState : GameBaseState
 
     void OnStartPressed()
     {
-        StateManager.ChangeState(2);
+        StateManager.ChangeState(3);
     }
     void OnSalirPressed()
     {

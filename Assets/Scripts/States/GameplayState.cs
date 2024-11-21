@@ -11,6 +11,7 @@ public class GameplayState : GameBaseState
     [SerializeField] private ColliderController borde;
     [SerializeField] private ObstacleSpawner spawner;
     [SerializeField] private UiManager uiController;
+    [SerializeField] private AudioManager musica;
     public Action EndGames;
 
     private void Awake() {
@@ -20,6 +21,7 @@ public class GameplayState : GameBaseState
     }
     public override void EnterState()
     {
+        musica.StartMusica();
         uiController.Open("gameplay");
         SoundManager.PlaySound(SoundManager.Sound.Click, 1);
         barcocontroler.ResetPhysics();
@@ -39,6 +41,7 @@ public class GameplayState : GameBaseState
 
     public override void ExitState()
     {
+        musica.PausarMusica();
         uiController.Close("gameplay");
         gamecontroler.OnGame = false;
         barcocontroler.BoatCrashed -= EndGame;
